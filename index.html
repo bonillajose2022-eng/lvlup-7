@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Reported Speech – Present to Past</title>
+<title>English Grammar · Grade 7</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
 /* ── TOKENS ────────────────────────────── */
@@ -23,11 +23,15 @@
   --r:14px;
   --r-sm:8px;
   --nav-h:60px;
+  /* Week 2 palette */
+  --w2-primary:#7c3aed;
+  --w2-primary-dk:#6d28d9;
+  --w2-secondary:#db2777;
+  --w2-accent:#059669;
 }
 
-/* ── RESET ─────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 70px)}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:15px}
 
 /* ── NAVBAR ────────────────────────────── */
@@ -38,130 +42,106 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
   display:flex;align-items:center;justify-content:space-between;
   padding:0 1.5rem;
   box-shadow:0 2px 12px rgba(67,56,202,.35);
+  transition:background .3s;
 }
-.nav-brand{
-  font-family:'Poppins',sans-serif;
-  font-size:1rem;font-weight:800;
-  color:#fff;letter-spacing:-.01em;white-space:nowrap;
-}
+.navbar.week2{background:var(--w2-primary);}
+.nav-brand{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:800;color:#fff;letter-spacing:-.01em;white-space:nowrap;}
 .nav-brand span{color:#a5b4fc}
+.navbar.week2 .nav-brand span{color:#f9a8d4}
 
-/* hamburger button */
-.nav-toggle{
-  display:flex;flex-direction:column;justify-content:center;gap:5px;
-  width:38px;height:38px;
-  background:rgba(255,255,255,.13);
-  border:none;border-radius:8px;cursor:pointer;padding:7px;flex-shrink:0;
-  transition:background .2s;
-}
+.nav-toggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:rgba(255,255,255,.13);border:none;border-radius:8px;cursor:pointer;padding:7px;flex-shrink:0;transition:background .2s;}
 .nav-toggle:hover{background:rgba(255,255,255,.22)}
-.nav-toggle span{
-  display:block;width:100%;height:2px;
-  background:#fff;border-radius:2px;
-  transition:transform .3s,opacity .3s;
-}
+.nav-toggle span{display:block;width:100%;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
 .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* drawer — tall enough for all links including extras */
-.nav-drawer{
-  position:fixed;top:var(--nav-h);left:0;right:0;z-index:190;
-  background:var(--primary-dk);
-  max-height:0;overflow-y:auto;overflow-x:hidden;
-  transition:max-height .38s cubic-bezier(.4,0,.2,1);
-}
+.nav-drawer{position:fixed;top:var(--nav-h);left:0;right:0;z-index:190;background:var(--primary-dk);max-height:0;overflow-y:auto;overflow-x:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1);}
 .nav-drawer.open{max-height:85vh}
-.drawer-section{
-  padding:.55rem 1.5rem .2rem;
-  font-size:.67rem;font-weight:700;letter-spacing:.1em;
-  color:#818cf8;text-transform:uppercase;
-}
-.nav-drawer a{
-  display:block;color:#c7d2fe;text-decoration:none;
-  padding:.78rem 1.5rem;
-  font-size:.87rem;font-weight:600;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  transition:background .15s,color .15s;
-}
+.nav-drawer.week2{background:var(--w2-primary-dk)}
+.drawer-section{padding:.55rem 1.5rem .2rem;font-size:.67rem;font-weight:700;letter-spacing:.1em;color:#818cf8;text-transform:uppercase;}
+.nav-drawer.week2 .drawer-section{color:#f9a8d4}
+.nav-drawer a{display:block;color:#c7d2fe;text-decoration:none;padding:.78rem 1.5rem;font-size:.87rem;font-weight:600;border-bottom:1px solid rgba(255,255,255,.06);transition:background .15s,color .15s;}
 .nav-drawer a:hover{background:rgba(255,255,255,.08);color:#fff}
 .nav-drawer a.ext-link{color:#6ee7f7}
-.nav-drawer a.ext-link:hover{color:#fff}
-
-/* overlay */
-.nav-overlay{
-  display:none;position:fixed;inset:0;z-index:180;
-  background:rgba(0,0,0,.35);
-}
+.nav-overlay{display:none;position:fixed;inset:0;z-index:180;background:rgba(0,0,0,.35);}
 .nav-overlay.open{display:block}
 
+/* ── WEEK TABS ──────────────────────────── */
+.week-tabs{
+  position:sticky;top:var(--nav-h);z-index:150;
+  display:flex;background:#fff;border-bottom:2px solid var(--border);
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.week-tab{
+  flex:1;padding:.9rem .5rem;text-align:center;cursor:pointer;
+  font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:800;
+  color:var(--muted);border-bottom:3px solid transparent;transition:all .22s;
+  user-select:none;
+}
+.week-tab.w1.active{color:var(--primary);border-bottom-color:var(--primary);}
+.week-tab.w2.active{color:var(--w2-primary);border-bottom-color:var(--w2-primary);}
+.week-tab:hover{background:#f5f3ff}
+.week-tab .tab-badge{display:inline-block;background:var(--border);color:var(--muted);border-radius:99px;font-size:.65rem;padding:.1rem .55rem;margin-left:.3rem;font-weight:700;}
+.week-tab.w1.active .tab-badge{background:var(--primary);color:#fff;}
+.week-tab.w2.active .tab-badge{background:var(--w2-primary);color:#fff;}
+
+/* ── WEEK PANELS ─────────────────────────── */
+.week-panel{display:none}
+.week-panel.active{display:block}
+
 /* ── HERO ───────────────────────────────── */
-.hero{
-  background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);
-  color:#fff;text-align:center;padding:3.5rem 1.5rem 4.5rem;
-}
-.hero-pill{
-  display:inline-block;background:rgba(255,255,255,.18);
-  border-radius:99px;padding:.28rem 1rem;
-  font-size:.74rem;font-weight:700;letter-spacing:.07em;margin-bottom:.9rem;
-}
-.hero h1{
-  font-family:'Poppins',sans-serif;
-  font-size:clamp(1.7rem,5vw,2.8rem);font-weight:800;line-height:1.15;
-  margin-bottom:.6rem;
-}
+.hero{color:#fff;text-align:center;padding:3.5rem 1.5rem 4.5rem;}
+.hero.w1{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);}
+.hero.w2{background:linear-gradient(135deg,var(--w2-primary) 0%,var(--w2-secondary) 100%);}
+.hero-pill{display:inline-block;background:rgba(255,255,255,.18);border-radius:99px;padding:.28rem 1rem;font-size:.74rem;font-weight:700;letter-spacing:.07em;margin-bottom:.9rem;}
+.hero h1{font-family:'Poppins',sans-serif;font-size:clamp(1.7rem,5vw,2.8rem);font-weight:800;line-height:1.15;margin-bottom:.6rem;}
 .hero p{font-size:.95rem;opacity:.88;max-width:520px;margin:0 auto}
 
 /* ── LAYOUT ─────────────────────────────── */
 .wrap{max-width:900px;margin:0 auto;padding:0 1.2rem}
 .section{padding:2.8rem 0 1rem}
-
-/* ── SECTION HEADING ────────────────────── */
 .sec-head{display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}
-.sec-icon{
-  width:38px;height:38px;flex-shrink:0;
-  background:var(--primary);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.05rem;color:#fff;
-}
-.sec-head h2{
-  font-family:'Poppins',sans-serif;
-  font-size:1.3rem;font-weight:800;color:var(--primary);
-}
+.sec-icon{width:38px;height:38px;flex-shrink:0;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:#fff;}
+.sec-icon.w1{background:var(--primary)}
+.sec-icon.w2{background:var(--w2-primary)}
+.sec-head h2{font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;}
+.sec-head h2.w1{color:var(--primary)}
+.sec-head h2.w2{color:var(--w2-primary)}
 
 /* ── CARD ───────────────────────────────── */
-.card{
-  background:var(--surface);border-radius:var(--r);
-  box-shadow:var(--shadow);border:1px solid var(--border);
-  padding:1.5rem;margin-bottom:1.2rem;
-}
+.card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);border:1px solid var(--border);padding:1.5rem;margin-bottom:1.2rem;}
 
 /* ── RULE BOX ───────────────────────────── */
-.rule{
-  background:#eef2ff;border-left:4px solid var(--primary);
-  border-radius:var(--r-sm);padding:.9rem 1.1rem;margin:1rem 0;font-size:.92rem;
-}
+.rule{background:#eef2ff;border-left:4px solid var(--primary);border-radius:var(--r-sm);padding:.9rem 1.1rem;margin:1rem 0;font-size:.92rem;}
+.rule.w2{background:#f5f3ff;border-left-color:var(--w2-primary);}
 .rule p{margin:.25rem 0}
 .rule strong{color:var(--primary)}
+.rule.w2 strong{color:var(--w2-primary)}
 
 /* ── EXAMPLE PAIR ───────────────────────── */
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.7rem 0}
 @media(max-width:540px){.pair{grid-template-columns:1fr}}
 .ex-d,.ex-r{border-radius:var(--r-sm);padding:.8rem 1rem;font-size:.91rem}
 .ex-d{background:#fefce8;border-left:3px solid var(--accent)}
+.ex-d.w2{background:#fdf4ff;border-left-color:var(--w2-primary)}
 .ex-r{background:#ecfdf5;border-left:3px solid var(--success)}
 .ex-lbl{font-size:.67rem;font-weight:700;letter-spacing:.07em;opacity:.58;text-transform:uppercase;margin-bottom:.22rem}
 
 /* ── TABLE ──────────────────────────────── */
 .tbl-wrap{overflow-x:auto;border-radius:var(--r-sm)}
 table{width:100%;border-collapse:collapse;font-size:.89rem}
-thead tr{background:var(--primary);color:#fff}
+thead tr{color:#fff}
+thead tr.w1{background:var(--primary)}
+thead tr.w2{background:var(--w2-primary)}
 thead th{padding:.72rem 1rem;text-align:left;font-weight:700}
 tbody tr:nth-child(even){background:#f5f3ff}
+.week2-panel tbody tr:nth-child(even){background:#fdf4ff}
 tbody td{padding:.62rem 1rem;border-bottom:1px solid var(--border)}
-tbody td:nth-child(1){font-weight:600;color:var(--muted)}
+tbody td:first-child{font-weight:600;color:var(--muted)}
 tbody td:nth-child(2){font-weight:700;color:var(--error)}
 tbody td:nth-child(3){font-weight:700;color:var(--success)}
+tbody td:nth-child(4){color:var(--text)}
 
 /* ── VIDEO GRID ─────────────────────────── */
 .vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -171,213 +151,201 @@ tbody td:nth-child(3){font-weight:700;color:var(--success)}
 
 /* ── EXERCISE BLOCK ─────────────────────── */
 .ex-block{margin-bottom:2rem}
-.ex-head{
-  background:linear-gradient(90deg,var(--primary),var(--secondary));
-  color:#fff;border-radius:var(--r) var(--r) 0 0;padding:1rem 1.4rem;
-}
+.ex-head{color:#fff;border-radius:var(--r) var(--r) 0 0;padding:1rem 1.4rem;}
+.ex-head.w1{background:linear-gradient(90deg,var(--primary),var(--secondary));}
+.ex-head.w2{background:linear-gradient(90deg,var(--w2-primary),var(--w2-secondary));}
 .ex-head h3{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:800}
 .ex-head p{font-size:.8rem;opacity:.88;margin-top:.12rem}
-.ex-body{
-  background:var(--surface);border:1px solid var(--border);border-top:none;
-  border-radius:0 0 var(--r) var(--r);padding:1.4rem;
-}
+.ex-body{background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--r) var(--r);padding:1.4rem;}
 
-/* solved example */
-.solved{
-  background:#f5f3ff;border-radius:var(--r-sm);
-  padding:.85rem 1.05rem;margin-bottom:1.3rem;
-  font-size:.87rem;border-left:3px solid var(--primary);
-}
-.solved .stag{
-  display:inline-block;background:var(--primary);color:#fff;
-  border-radius:99px;padding:.08rem .65rem;font-size:.69rem;font-weight:700;
-  margin-bottom:.32rem;
-}
+/* solved */
+.solved{border-radius:var(--r-sm);padding:.85rem 1.05rem;margin-bottom:1.3rem;font-size:.87rem;}
+.solved.w1{background:#f5f3ff;border-left:3px solid var(--primary);}
+.solved.w2{background:#fdf4ff;border-left:3px solid var(--w2-primary);}
+.solved .stag{display:inline-block;color:#fff;border-radius:99px;padding:.08rem .65rem;font-size:.69rem;font-weight:700;margin-bottom:.32rem;}
+.solved.w1 .stag{background:var(--primary)}
+.solved.w2 .stag{background:var(--w2-primary)}
 
-/* question block — using :last-child for correct CSS targeting */
+/* question block */
 .qb{margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border)}
 .qb:last-child{border-bottom:none;margin-bottom:.4rem}
 .qt{font-weight:600;margin-bottom:.52rem;font-size:.93rem}
 
-/* radio options */
-.opts label{
-  display:flex;align-items:flex-start;gap:.52rem;
-  cursor:pointer;padding:.4rem .62rem;border-radius:7px;
-  margin-bottom:.2rem;transition:background .12s;font-size:.88rem;
-}
+/* radio */
+.opts label{display:flex;align-items:flex-start;gap:.52rem;cursor:pointer;padding:.4rem .62rem;border-radius:7px;margin-bottom:.2rem;transition:background .12s;font-size:.88rem;}
 .opts label:hover{background:#eef2ff}
-.opts input[type=radio]{accent-color:var(--primary);width:15px;height:15px;flex-shrink:0;margin-top:.15rem}
+.week2-panel .opts label:hover{background:#f5f3ff}
+.opts input[type=radio]{width:15px;height:15px;flex-shrink:0;margin-top:.15rem}
+.w1-radio{accent-color:var(--primary)}
+.w2-radio{accent-color:var(--w2-primary)}
 
 /* text inputs */
-.txt-in{
-  border:1.5px solid var(--border);border-radius:var(--r-sm);
-  padding:.4rem .78rem;font-family:'Inter',sans-serif;font-size:.9rem;
-  width:100%;max-width:400px;margin-top:.38rem;
-  transition:border-color .18s;color:var(--text);background:var(--surface);
-}
-.txt-in:focus{outline:none;border-color:var(--primary)}
+.txt-in{border:1.5px solid var(--border);border-radius:var(--r-sm);padding:.4rem .78rem;font-family:'Inter',sans-serif;font-size:.9rem;width:100%;max-width:400px;margin-top:.38rem;transition:border-color .18s;color:var(--text);background:var(--surface);}
+.txt-in:focus{outline:none}
+.txt-in.w1:focus{border-color:var(--primary)}
+.txt-in.w2:focus{border-color:var(--w2-primary)}
 .txt-wide{max-width:100%}
 
-/* matching */
+/* match */
 .match-row{display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.9rem;flex-wrap:wrap}
-.match-pill{
-  background:#fefce8;border:1.5px solid var(--accent);
-  border-radius:7px;padding:.4rem .8rem;
-  font-weight:600;font-size:.83rem;flex-shrink:0;max-width:240px;line-height:1.4;
-}
-.match-sel{
-  flex:1;min-width:190px;
-  border:1.5px solid var(--border);border-radius:var(--r-sm);
-  padding:.4rem .68rem;font-family:'Inter',sans-serif;font-size:.83rem;
-  background:var(--surface);color:var(--text);cursor:pointer;
-  transition:border-color .18s;
-}
-.match-sel:focus{outline:none;border-color:var(--primary)}
+.match-pill{background:#fefce8;border:1.5px solid var(--accent);border-radius:7px;padding:.4rem .8rem;font-weight:600;font-size:.83rem;flex-shrink:0;max-width:240px;line-height:1.4;}
+.match-pill.w2{background:#fdf4ff;border-color:var(--w2-primary)}
+.match-sel{flex:1;min-width:190px;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:.4rem .68rem;font-family:'Inter',sans-serif;font-size:.83rem;background:var(--surface);color:var(--text);cursor:pointer;transition:border-color .18s;}
+.match-sel:focus{outline:none}
+.match-sel.w1:focus{border-color:var(--primary)}
+.match-sel.w2:focus{border-color:var(--w2-primary)}
 
 /* transform prompt */
-.tr-prompt{
-  background:#fefce8;border-left:3px solid var(--accent);
-  padding:.58rem .9rem;border-radius:var(--r-sm);
-  font-weight:600;margin-bottom:.42rem;font-size:.91rem;
-}
+.tr-prompt{border-radius:var(--r-sm);padding:.58rem .9rem;font-weight:600;margin-bottom:.42rem;font-size:.91rem;}
+.tr-prompt.w1{background:#fefce8;border-left:3px solid var(--accent)}
+.tr-prompt.w2{background:#fdf4ff;border-left:3px solid var(--w2-primary)}
 
-/* feedback pill */
-.fb{
-  display:inline-block;font-size:.78rem;font-weight:700;
-  border-radius:99px;padding:.16rem .78rem;margin-top:.32rem;min-height:20px;line-height:1.4;
-}
+/* feedback */
+.fb{display:inline-block;font-size:.78rem;font-weight:700;border-radius:99px;padding:.16rem .78rem;margin-top:.32rem;min-height:20px;line-height:1.4;}
 .fb.ok{background:#d1fae5;color:#065f46}
 .fb.no{background:#fee2e2;color:#991b1b}
 
 /* reading text */
-.read-text{
-  background:#f0fdfa;border:1px solid #99f6e4;
-  border-radius:var(--r-sm);padding:1.2rem 1.4rem;
-  margin-bottom:1.4rem;font-size:.91rem;line-height:1.75;
-}
+.read-text{border-radius:var(--r-sm);padding:1.2rem 1.4rem;margin-bottom:1.4rem;font-size:.91rem;line-height:1.75;}
+.read-text.w1{background:#f0fdfa;border:1px solid #99f6e4;}
+.read-text.w2{background:#fdf4ff;border:1px solid #e9d5ff;}
 .read-text p+p{margin-top:.65rem}
 
 /* ── BUTTONS ─────────────────────────────── */
-.btn{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.52rem 1.25rem;border:none;border-radius:99px;
-  font-family:'Inter',sans-serif;font-size:.86rem;font-weight:700;
-  cursor:pointer;transition:transform .15s,box-shadow .15s;
-}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.52rem 1.25rem;border:none;border-radius:99px;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;}
 .btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.15)}
 .btn-primary{background:var(--primary);color:#fff}
+.btn-w2{background:var(--w2-primary);color:#fff}
 .btn-accent{background:var(--accent);color:#fff}
-.btn-teal{background:var(--secondary);color:#fff}
+.btn-w2-accent{background:var(--w2-secondary);color:#fff}
 
 /* ── SCORE REVEAL ───────────────────────── */
-.score-reveal{
-  display:none;margin-top:1rem;
-  background:linear-gradient(135deg,var(--primary),var(--secondary));
-  color:#fff;border-radius:var(--r);padding:1.2rem 1.5rem;text-align:center;
-}
+.score-reveal{display:none;margin-top:1rem;color:#fff;border-radius:var(--r);padding:1.2rem 1.5rem;text-align:center;}
+.score-reveal.w1{background:linear-gradient(135deg,var(--primary),var(--secondary));}
+.score-reveal.w2{background:linear-gradient(135deg,var(--w2-primary),var(--w2-secondary));}
 .score-reveal .snum{font-family:'Poppins',sans-serif;font-size:2rem;font-weight:800}
 .score-reveal p{font-size:.86rem;opacity:.9;margin-top:.2rem}
 
 /* ── TOTAL SCORE ────────────────────────── */
-.total-box{
-  background:linear-gradient(135deg,var(--primary),var(--secondary));
-  color:#fff;border-radius:var(--r);padding:2.2rem 1.5rem;
-  text-align:center;margin:2rem 0 2rem;
-}
+.total-box{color:#fff;border-radius:var(--r);padding:2.2rem 1.5rem;text-align:center;margin:2rem 0;}
+.total-box.w1{background:linear-gradient(135deg,var(--primary),var(--secondary));}
+.total-box.w2{background:linear-gradient(135deg,var(--w2-primary),var(--w2-secondary));}
 .total-box h2{font-family:'Poppins',sans-serif;font-size:1.25rem;margin-bottom:.4rem}
 .total-box .big{font-family:'Poppins',sans-serif;font-size:2.8rem;font-weight:800}
 
-/* ── EXTRA PRACTICE ─────────────────────── */
-.extra-section{
-  background:var(--surface);border-radius:var(--r);
-  box-shadow:var(--shadow);border:1px solid var(--border);
-  padding:1.6rem;margin-bottom:3rem;
-}
-.wordwall-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  gap:1rem;margin-top:1rem;
-}
-.ww-card{
-  display:flex;flex-direction:column;align-items:center;
-  background:#f5f3ff;border:1.5px solid #c4b5fd;
-  border-radius:var(--r-sm);padding:1.1rem .9rem;
-  text-align:center;text-decoration:none;
-  transition:transform .18s,box-shadow .18s,background .18s;
-  gap:.55rem;
-}
-.ww-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 22px rgba(67,56,202,.18);
-  background:#ede9fe;
-}
+/* ── EXTRA / WORDWALL ───────────────────── */
+.extra-section{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);border:1px solid var(--border);padding:1.6rem;margin-bottom:3rem;}
+.wordwall-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1rem;}
+.ww-card{display:flex;flex-direction:column;align-items:center;border-radius:var(--r-sm);padding:1.1rem .9rem;text-align:center;text-decoration:none;transition:transform .18s,box-shadow .18s,background .18s;gap:.55rem;}
+.ww-card.w1{background:#f5f3ff;border:1.5px solid #c4b5fd;}
+.ww-card.w2{background:#fdf4ff;border:1.5px solid #d8b4fe;}
+.ww-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(67,56,202,.18);}
+.ww-card.w1:hover{background:#ede9fe;}
+.ww-card.w2:hover{background:#f3e8ff;}
 .ww-icon{font-size:1.7rem}
-.ww-label{
-  font-family:'Poppins',sans-serif;
-  font-size:.8rem;font-weight:700;color:var(--primary);line-height:1.35;
-}
-.ww-badge{
-  display:inline-block;background:var(--primary);color:#fff;
-  border-radius:99px;padding:.12rem .65rem;font-size:.68rem;font-weight:700;
-}
+.ww-label{font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:700;line-height:1.35;}
+.ww-card.w1 .ww-label{color:var(--primary)}
+.ww-card.w2 .ww-label{color:var(--w2-primary)}
+.ww-badge{display:inline-block;color:#fff;border-radius:99px;padding:.12rem .65rem;font-size:.68rem;font-weight:700;}
+.ww-card.w1 .ww-badge{background:var(--primary)}
+.ww-card.w2 .ww-badge{background:var(--w2-primary)}
 
-/* ── DIVIDER ────────────────────────────── */
+/* highlight */
+.hl{color:var(--primary);font-weight:700}
+.hl.w2{color:var(--w2-primary)}
+
+/* divider */
 .divider{height:1px;background:var(--border);margin:1.6rem 0}
 
-/* ── FOOTER ─────────────────────────────── */
-footer{background:var(--primary);color:#a5b4fc;text-align:center;padding:1rem;font-size:.8rem}
-
-/* misc */
+/* lists */
 p{line-height:1.7}
 ul{padding-left:1.25rem}
 ul li{margin:.3rem 0;font-size:.91rem}
-.hl{color:var(--primary);font-weight:700}
+
+/* footer */
+footer{background:var(--primary);color:#a5b4fc;text-align:center;padding:1rem;font-size:.8rem}
+.week2-panel ~ footer,footer.w2{background:var(--w2-primary)}
 </style>
 </head>
 <body>
 
 <!-- ══ NAVBAR ═══════════════════════════════ -->
-<nav class="navbar">
-  <div class="nav-brand">Reported <span>Speech</span></div>
+<nav class="navbar" id="mainNav">
+  <div class="nav-brand">English <span>Grammar</span></div>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="nav-overlay" id="navOverlay"></div>
-
 <div class="nav-drawer" id="navDrawer">
-  <div class="drawer-section">Theory</div>
-  <a href="#intro"      onclick="closeMenu()">📖 Introduction</a>
-  <a href="#statements" onclick="closeMenu()">📢 Statements</a>
-  <a href="#questions"  onclick="closeMenu()">❓ Questions</a>
-  <a href="#changes"    onclick="closeMenu()">🔄 Verb Changes</a>
-  <a href="#examples"   onclick="closeMenu()">💡 More Examples</a>
-  <a href="#videos"     onclick="closeMenu()">🎬 Videos</a>
-  <div class="drawer-section">Exercises</div>
-  <a href="#mc"         onclick="closeMenu()">A · Multiple Choice</a>
-  <a href="#fill"       onclick="closeMenu()">B · Fill in the Blank</a>
-  <a href="#match"      onclick="closeMenu()">C · Matching</a>
-  <a href="#reading"    onclick="closeMenu()">D · Reading</a>
-  <a href="#correct"    onclick="closeMenu()">E · Correct the Mistake</a>
-  <a href="#transform"  onclick="closeMenu()">F · Transform</a>
-  <a href="#score"      onclick="closeMenu()">🏆 My Score</a>
-  <div class="drawer-section">Extra</div>
-  <a href="#extra"      onclick="closeMenu()" class="ext-link">🎮 Extra Practice (Wordwall)</a>
+  <!-- Week 1 links -->
+  <div class="drawer-section" id="drawerW1Label">Week 1 · Reported Speech</div>
+  <div id="drawerW1Links">
+    <a href="#intro"      onclick="closeMenu()">📖 Introduction</a>
+    <a href="#statements" onclick="closeMenu()">📢 Statements</a>
+    <a href="#questions"  onclick="closeMenu()">❓ Questions</a>
+    <a href="#changes"    onclick="closeMenu()">🔄 Verb Changes</a>
+    <a href="#examples"   onclick="closeMenu()">💡 More Examples</a>
+    <a href="#videos"     onclick="closeMenu()">🎬 Videos</a>
+    <div class="drawer-section">Exercises</div>
+    <a href="#mc"         onclick="closeMenu()">A · Multiple Choice</a>
+    <a href="#fill"       onclick="closeMenu()">B · Fill in the Blank</a>
+    <a href="#match"      onclick="closeMenu()">C · Matching</a>
+    <a href="#reading"    onclick="closeMenu()">D · Reading</a>
+    <a href="#correct"    onclick="closeMenu()">E · Correct the Mistake</a>
+    <a href="#transform"  onclick="closeMenu()">F · Transform</a>
+    <a href="#score"      onclick="closeMenu()">🏆 My Score</a>
+    <div class="drawer-section">Extra</div>
+    <a href="#extra"      onclick="closeMenu()" class="ext-link">🎮 Extra Practice</a>
+  </div>
+  <!-- Week 2 links -->
+  <div class="drawer-section" id="drawerW2Label" style="display:none">Week 2 · Comparative Adverbs</div>
+  <div id="drawerW2Links" style="display:none">
+    <a href="#w2-intro"      onclick="closeMenu()">📖 Introduction</a>
+    <a href="#w2-rules"      onclick="closeMenu()">📏 Formation Rules</a>
+    <a href="#w2-table"      onclick="closeMenu()">🔄 Reference Table</a>
+    <a href="#w2-examples"   onclick="closeMenu()">💡 More Examples</a>
+    <a href="#w2-videos"     onclick="closeMenu()">🎬 Videos</a>
+    <div class="drawer-section">Exercises</div>
+    <a href="#w2-mc"         onclick="closeMenu()">A · Multiple Choice</a>
+    <a href="#w2-fill"       onclick="closeMenu()">B · Fill in the Blank</a>
+    <a href="#w2-match"      onclick="closeMenu()">C · Matching</a>
+    <a href="#w2-reading"    onclick="closeMenu()">D · Reading</a>
+    <a href="#w2-correct"    onclick="closeMenu()">E · Correct the Mistake</a>
+    <a href="#w2-transform"  onclick="closeMenu()">F · Transform</a>
+    <a href="#w2-score"      onclick="closeMenu()">🏆 My Score</a>
+    <div class="drawer-section">Extra</div>
+    <a href="#w2-extra"      onclick="closeMenu()" class="ext-link">🎮 Extra Practice</a>
+  </div>
 </div>
 
-<!-- ══ HERO ═════════════════════════════════ -->
-<header class="hero">
-  <div class="hero-pill">English Grammar · A2+ / B1 · Grade 7</div>
+<!-- ══ WEEK TABS ═════════════════════════════ -->
+<div class="week-tabs">
+  <div class="week-tab w1 active" id="tab1" onclick="switchWeek(1)">
+    📝 Week 1 <span class="tab-badge">Reported Speech</span>
+  </div>
+  <div class="week-tab w2" id="tab2" onclick="switchWeek(2)">
+    ⚡ Week 2 <span class="tab-badge">Comparative Adverbs</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     WEEK 1 PANEL
+════════════════════════════════════════════ -->
+<div class="week-panel active" id="panel1">
+
+<header class="hero w1">
+  <div class="hero-pill">English Grammar · A2+ / B1 · Grade 7 · Week 1</div>
   <h1>Reported Speech</h1>
   <p>Statements &amp; Questions — Shifting from Present to Past Tense</p>
 </header>
 
 <div class="wrap">
 
-<!-- ── INTRO ──────────────────────────────── -->
+<!-- INTRO -->
 <section class="section" id="intro">
-  <div class="sec-head"><div class="sec-icon">📖</div><h2>Introduction</h2></div>
+  <div class="sec-head"><div class="sec-icon w1">📖</div><h2 class="w1">Introduction</h2></div>
   <div class="card">
     <p>When we <span class="hl">report</span> what someone said, we use <strong>reported speech</strong> (indirect speech). We do not always repeat the exact words — the verb tense shifts <strong>one step back into the past</strong>.</p>
     <div class="rule">
@@ -392,9 +360,9 @@ ul li{margin:.3rem 0;font-size:.91rem}
   </div>
 </section>
 
-<!-- ── STATEMENTS ─────────────────────────── -->
+<!-- STATEMENTS -->
 <section class="section" id="statements">
-  <div class="sec-head"><div class="sec-icon">📢</div><h2>Reported Statements</h2></div>
+  <div class="sec-head"><div class="sec-icon w1">📢</div><h2 class="w1">Reported Statements</h2></div>
   <div class="card">
     <p>A <strong>statement</strong> is a declarative sentence (not a question). To report it:</p>
     <ul>
@@ -403,9 +371,7 @@ ul li{margin:.3rem 0;font-size:.91rem}
       <li>Shift the verb tense one step back into the past</li>
       <li>Change pronouns as needed (e.g. <em>I → she, my → her</em>)</li>
     </ul>
-    <div class="rule">
-      <strong>Pattern:</strong> Subject + said / told (sb) + (that) + subject + past verb…
-    </div>
+    <div class="rule"><strong>Pattern:</strong> Subject + said / told (sb) + (that) + subject + past verb…</div>
     <div class="pair">
       <div class="ex-d"><div class="ex-lbl">Direct</div>"I <u>love</u> music."</div>
       <div class="ex-r"><div class="ex-lbl">Reported</div>She said (that) she <u>loved</u> music.</div>
@@ -421,9 +387,9 @@ ul li{margin:.3rem 0;font-size:.91rem}
   </div>
 </section>
 
-<!-- ── QUESTIONS ──────────────────────────── -->
+<!-- QUESTIONS -->
 <section class="section" id="questions">
-  <div class="sec-head"><div class="sec-icon">❓</div><h2>Reported Questions</h2></div>
+  <div class="sec-head"><div class="sec-icon w1">❓</div><h2 class="w1">Reported Questions</h2></div>
   <div class="card">
     <p>Reported questions use <strong>asked</strong>, follow <strong>normal statement word order</strong> (subject before verb, no inversion), and remove the auxiliary <em>do / does / did</em>.</p>
     <div class="rule">
@@ -449,13 +415,13 @@ ul li{margin:.3rem 0;font-size:.91rem}
   </div>
 </section>
 
-<!-- ── VERB CHANGES ───────────────────────── -->
+<!-- VERB CHANGES -->
 <section class="section" id="changes">
-  <div class="sec-head"><div class="sec-icon">🔄</div><h2>Verb Changes Table</h2></div>
+  <div class="sec-head"><div class="sec-icon w1">🔄</div><h2 class="w1">Verb Changes Table</h2></div>
   <div class="card">
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>Category</th><th>Direct Speech</th><th>Reported Speech</th></tr></thead>
+        <thead><tr class="w1"><th>Category</th><th>Direct Speech</th><th>Reported Speech</th></tr></thead>
         <tbody>
           <tr><td>To be (singular)</td><td>am / is</td><td>was</td></tr>
           <tr><td>To be (plural)</td><td>are</td><td>were</td></tr>
@@ -471,123 +437,77 @@ ul li{margin:.3rem 0;font-size:.91rem}
   </div>
 </section>
 
-<!-- ── MORE EXAMPLES ──────────────────────── -->
+<!-- MORE EXAMPLES -->
 <section class="section" id="examples">
-  <div class="sec-head"><div class="sec-icon">💡</div><h2>More Examples</h2></div>
+  <div class="sec-head"><div class="sec-icon w1">💡</div><h2 class="w1">More Examples</h2></div>
   <div class="card">
-    <div class="pair">
-      <div class="ex-d"><div class="ex-lbl">Direct</div>"I <u>can</u> swim fast."</div>
-      <div class="ex-r"><div class="ex-lbl">Reported</div>He said he <u>could</u> swim fast.</div>
-    </div>
-    <div class="pair">
-      <div class="ex-d"><div class="ex-lbl">Direct</div>"She <u>will</u> call you."</div>
-      <div class="ex-r"><div class="ex-lbl">Reported</div>He said she <u>would</u> call me.</div>
-    </div>
-    <div class="pair">
-      <div class="ex-d"><div class="ex-lbl">Direct</div>"They <u>are playing</u> outside."</div>
-      <div class="ex-r"><div class="ex-lbl">Reported</div>She said they <u>were playing</u> outside.</div>
-    </div>
-    <div class="pair">
-      <div class="ex-d"><div class="ex-lbl">Direct</div>"I <u>do</u> yoga every morning."</div>
-      <div class="ex-r"><div class="ex-lbl">Reported</div>She said she <u>did</u> yoga every morning.</div>
-    </div>
-    <div class="pair">
-      <div class="ex-d"><div class="ex-lbl">Direct</div>"What <u>do</u> you <u>want</u>?"</div>
-      <div class="ex-r"><div class="ex-lbl">Reported</div>She asked what I <u>wanted</u>.</div>
-    </div>
-    <div class="pair">
-      <div class="ex-d"><div class="ex-lbl">Direct</div>"<u>Is</u> he your brother?"</div>
-      <div class="ex-r"><div class="ex-lbl">Reported</div>She asked if he <u>was</u> my brother.</div>
-    </div>
+    <div class="pair"><div class="ex-d"><div class="ex-lbl">Direct</div>"I <u>can</u> swim fast."</div><div class="ex-r"><div class="ex-lbl">Reported</div>He said he <u>could</u> swim fast.</div></div>
+    <div class="pair"><div class="ex-d"><div class="ex-lbl">Direct</div>"She <u>will</u> call you."</div><div class="ex-r"><div class="ex-lbl">Reported</div>He said she <u>would</u> call me.</div></div>
+    <div class="pair"><div class="ex-d"><div class="ex-lbl">Direct</div>"They <u>are playing</u> outside."</div><div class="ex-r"><div class="ex-lbl">Reported</div>She said they <u>were playing</u> outside.</div></div>
+    <div class="pair"><div class="ex-d"><div class="ex-lbl">Direct</div>"I <u>do</u> yoga every morning."</div><div class="ex-r"><div class="ex-lbl">Reported</div>She said she <u>did</u> yoga every morning.</div></div>
+    <div class="pair"><div class="ex-d"><div class="ex-lbl">Direct</div>"What <u>do</u> you <u>want</u>?"</div><div class="ex-r"><div class="ex-lbl">Reported</div>She asked what I <u>wanted</u>.</div></div>
+    <div class="pair"><div class="ex-d"><div class="ex-lbl">Direct</div>"<u>Is</u> he your brother?"</div><div class="ex-r"><div class="ex-lbl">Reported</div>She asked if he <u>was</u> my brother.</div></div>
   </div>
 </section>
 
-<!-- ── VIDEOS ─────────────────────────────── -->
+<!-- VIDEOS -->
 <section class="section" id="videos">
-  <div class="sec-head"><div class="sec-icon">🎬</div><h2>Explanatory Videos</h2></div>
+  <div class="sec-head"><div class="sec-icon w1">🎬</div><h2 class="w1">Explanatory Videos</h2></div>
   <div class="vid-grid">
-    <div class="vid-wrap">
-      <iframe src="https://www.youtube.com/embed/HLFqFIjelFg" allowfullscreen loading="lazy" title="Reported Speech Video 1"></iframe>
-    </div>
-    <div class="vid-wrap">
-      <iframe src="https://www.youtube.com/embed/eplQBhE0-Hg" allowfullscreen loading="lazy" title="Reported Speech Video 2"></iframe>
-    </div>
+    <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/HLFqFIjelFg" allowfullscreen loading="lazy" title="Reported Speech Video 1"></iframe></div>
+    <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/eplQBhE0-Hg" allowfullscreen loading="lazy" title="Reported Speech Video 2"></iframe></div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ EXERCISES ════════════════════════════ -->
+<!-- ── EXERCISES WEEK 1 ───────────────────── -->
 
-<!-- A – MULTIPLE CHOICE -->
+<!-- A MC -->
 <section class="section" id="mc">
   <div class="ex-block">
-    <div class="ex-head">
-      <h3>A · Multiple Choice</h3>
-      <p>Choose the correct reported speech form — A, B, or C.</p>
-    </div>
+    <div class="ex-head w1"><h3>A · Multiple Choice</h3><p>Choose the correct reported speech form — A, B, or C.</p></div>
     <div class="ex-body">
-      <div class="solved">
-        <span class="stag">Solved Example</span>
-        <p>Direct: "I <u>am</u> hungry." → She said she _______.</p>
-        <p>✅ <strong>B) was hungry</strong> — "am" becomes "was" in reported speech.</p>
-      </div>
+      <div class="solved w1"><span class="stag">Solved Example</span><p>Direct: "I <u>am</u> hungry." → She said she _______.</p><p>✅ <strong>B) was hungry</strong> — "am" becomes "was" in reported speech.</p></div>
       <div id="mc-qs"></div>
       <button class="btn btn-primary" onclick="checkMC()">✅ Check Answers</button>
-      <div class="score-reveal" id="mc-score"></div>
+      <div class="score-reveal w1" id="mc-score"></div>
     </div>
   </div>
 </section>
 
-<!-- B – FILL IN THE BLANK -->
+<!-- B FILL -->
 <section class="section" id="fill">
   <div class="ex-block">
-    <div class="ex-head">
-      <h3>B · Fill in the Blank</h3>
-      <p>Type the correct word to complete each reported speech sentence.</p>
-    </div>
+    <div class="ex-head w1"><h3>B · Fill in the Blank</h3><p>Type the correct word to complete each reported speech sentence.</p></div>
     <div class="ex-body">
-      <div class="solved">
-        <span class="stag">Solved Example</span>
-        <p>Direct: "She <u>can</u> dance very well." → He said she _______ dance very well.</p>
-        <p>✅ <strong>could</strong> — "can" becomes "could" in reported speech.</p>
-      </div>
+      <div class="solved w1"><span class="stag">Solved Example</span><p>Direct: "She <u>can</u> dance very well." → He said she _______ dance very well.</p><p>✅ <strong>could</strong> — "can" becomes "could" in reported speech.</p></div>
       <div id="fill-qs"></div>
       <button class="btn btn-primary" onclick="checkFill()">✅ Check Answers</button>
-      <div class="score-reveal" id="fill-score"></div>
+      <div class="score-reveal w1" id="fill-score"></div>
     </div>
   </div>
 </section>
 
-<!-- C – MATCHING -->
+<!-- C MATCH -->
 <section class="section" id="match">
   <div class="ex-block">
-    <div class="ex-head">
-      <h3>C · Matching Activity</h3>
-      <p>Select the correct reported speech form for each direct speech sentence.</p>
-    </div>
+    <div class="ex-head w1"><h3>C · Matching Activity</h3><p>Select the correct reported speech form for each direct speech sentence.</p></div>
     <div class="ex-body">
-      <div class="solved">
-        <span class="stag">Solved Example</span>
-        <p>Direct: "I <u>work</u> here." → Reported: She said she <strong>worked</strong> there.</p>
-        <p>Present simple "work" becomes past simple "worked".</p>
-      </div>
+      <div class="solved w1"><span class="stag">Solved Example</span><p>Direct: "I <u>work</u> here." → Reported: She said she <strong>worked</strong> there.</p><p>Present simple "work" becomes past simple "worked".</p></div>
       <div id="match-qs"></div>
       <button class="btn btn-primary" onclick="checkMatch()">✅ Check Answers</button>
-      <div class="score-reveal" id="match-score"></div>
+      <div class="score-reveal w1" id="match-score"></div>
     </div>
   </div>
 </section>
 
-<!-- D – READING -->
+<!-- D READING -->
 <section class="section" id="reading">
   <div class="ex-block">
-    <div class="ex-head">
-      <h3>D · Reading Comprehension</h3>
-      <p>Read the text carefully, then answer the 5 questions below.</p>
-    </div>
+    <div class="ex-head w1"><h3>D · Reading Comprehension</h3><p>Read the text carefully, then answer the 5 questions below.</p></div>
     <div class="ex-body">
-      <div class="read-text">
+      <div class="read-text w1">
         <p><strong>📄 The School Interview</strong></p>
         <p>Yesterday, a journalist visited Lincoln School and interviewed two students about their school life. The first student, Lucia, said that <strong>she loved her English class</strong> because the teacher was very creative. She also mentioned that <strong>she was preparing a project</strong> about endangered animals for the science fair.</p>
         <p>The second student, Marco, told the journalist that <strong>he could play the guitar</strong> and that <strong>he would perform at the school concert</strong> the following month. When the journalist asked if he was nervous, Marco replied that <strong>he was a little nervous</strong> but very excited. He added that his classmates were very supportive and kind.</p>
@@ -595,56 +515,41 @@ ul li{margin:.3rem 0;font-size:.91rem}
       </div>
       <div id="reading-qs"></div>
       <button class="btn btn-primary" onclick="checkReading()">✅ Check Answers</button>
-      <div class="score-reveal" id="reading-score"></div>
+      <div class="score-reveal w1" id="reading-score"></div>
     </div>
   </div>
 </section>
 
-<!-- E – CORRECT THE MISTAKE -->
+<!-- E CORRECT -->
 <section class="section" id="correct">
   <div class="ex-block">
-    <div class="ex-head">
-      <h3>E · Correct the Mistake</h3>
-      <p>Each sentence has one error in reported speech. Choose the corrected version.</p>
-    </div>
+    <div class="ex-head w1"><h3>E · Correct the Mistake</h3><p>Each sentence has one error in reported speech. Choose the corrected version.</p></div>
     <div class="ex-body">
-      <div class="solved">
-        <span class="stag">Solved Example</span>
-        <p>❌ She said she <u>is</u> tired.</p>
-        <p>✅ <strong>She said she <u>was</u> tired.</strong> — "is" must shift to "was" in reported speech.</p>
-      </div>
+      <div class="solved w1"><span class="stag">Solved Example</span><p>❌ She said she <u>is</u> tired.</p><p>✅ <strong>She said she <u>was</u> tired.</strong> — "is" must shift to "was" in reported speech.</p></div>
       <div id="correct-qs"></div>
       <button class="btn btn-primary" onclick="checkCorrect()">✅ Check Answers</button>
-      <div class="score-reveal" id="correct-score"></div>
+      <div class="score-reveal w1" id="correct-score"></div>
     </div>
   </div>
 </section>
 
-<!-- F – TRANSFORM -->
+<!-- F TRANSFORM -->
 <section class="section" id="transform">
   <div class="ex-block">
-    <div class="ex-head">
-      <h3>F · Transform the Sentences</h3>
-      <p>Read the direct speech and write the complete reported speech sentence in the box.</p>
-    </div>
+    <div class="ex-head w1"><h3>F · Transform the Sentences</h3><p>Read the direct speech and write the complete reported speech sentence in the box.</p></div>
     <div class="ex-body">
-      <div class="solved">
-        <span class="stag">Solved Example</span>
-        <p>Direct: "I <u>am</u> a student." (She said…)</p>
-        <p>✅ <strong>She said she was a student.</strong></p>
-        <p style="font-size:.83rem;color:var(--muted);margin-top:.3rem">💡 Write the complete sentence. "that" is optional.</p>
-      </div>
+      <div class="solved w1"><span class="stag">Solved Example</span><p>Direct: "I <u>am</u> a student." (She said…)</p><p>✅ <strong>She said she was a student.</strong></p><p style="font-size:.83rem;color:var(--muted);margin-top:.3rem">💡 Write the complete sentence. "that" is optional.</p></div>
       <div id="transform-qs"></div>
       <button class="btn btn-primary" onclick="checkTransform()">✅ Check Answers</button>
-      <div class="score-reveal" id="transform-score"></div>
+      <div class="score-reveal w1" id="transform-score"></div>
     </div>
   </div>
 </section>
 
-<!-- ── TOTAL SCORE ─────────────────────────── -->
+<!-- SCORE W1 -->
 <section id="score">
-  <div class="total-box">
-    <h2>🏆 My Total Score</h2>
+  <div class="total-box w1">
+    <h2>🏆 My Total Score — Week 1</h2>
     <div class="big" id="total-num">— / —</div>
     <p id="total-msg">Complete all exercises, then press the button to see your final result.</p>
     <br>
@@ -652,42 +557,276 @@ ul li{margin:.3rem 0;font-size:.91rem}
   </div>
 </section>
 
-<!-- ── EXTRA PRACTICE ──────────────────────── -->
+<!-- EXTRA W1 -->
 <section class="section" id="extra">
-  <div class="sec-head"><div class="sec-icon">🎮</div><h2>Extra Practice</h2></div>
+  <div class="sec-head"><div class="sec-icon w1">🎮</div><h2 class="w1">Extra Practice</h2></div>
   <div class="extra-section">
-    <p>Want more practice? Try these interactive Wordwall activities! Click any card to open the activity in a new tab.</p>
+    <p>Want more practice? Try these interactive activities! Click any card to open in a new tab.</p>
     <div class="wordwall-grid">
-      <a class="ww-card" href="https://wordwall.net/es/resource/4607922/reported-speech" target="_blank" rel="noopener">
-        <div class="ww-icon">🔁</div>
-        <div class="ww-label">Reported Speech<br>Activity 1</div>
-        <span class="ww-badge">Wordwall</span>
-      </a>
-      <a class="ww-card" href="https://wordwall.net/es/resource/2657468/reported-speech" target="_blank" rel="noopener">
-        <div class="ww-icon">🧩</div>
-        <div class="ww-label">Reported Speech<br>Activity 2</div>
-        <span class="ww-badge">Wordwall</span>
-      </a>
-      <a class="ww-card" href="https://wordwall.net/es/resource/6342146/reported-speech-quiz" target="_blank" rel="noopener">
-        <div class="ww-icon">📝</div>
-        <div class="ww-label">Reported Speech<br>Quiz</div>
-        <span class="ww-badge">Wordwall</span>
-      </a>
-      <a class="ww-card" href="https://wordwall.net/es/resource/5353281/reported-speech" target="_blank" rel="noopener">
-        <div class="ww-icon">⭐</div>
-        <div class="ww-label">Reported Speech<br>Activity 3</div>
-        <span class="ww-badge">Wordwall</span>
-      </a>
+      <a class="ww-card w1" href="https://wordwall.net/es/resource/4607922/reported-speech" target="_blank" rel="noopener"><div class="ww-icon">🔁</div><div class="ww-label">Reported Speech<br>Activity 1</div><span class="ww-badge">Wordwall</span></a>
+      <a class="ww-card w1" href="https://wordwall.net/es/resource/2657468/reported-speech" target="_blank" rel="noopener"><div class="ww-icon">🧩</div><div class="ww-label">Reported Speech<br>Activity 2</div><span class="ww-badge">Wordwall</span></a>
+      <a class="ww-card w1" href="https://wordwall.net/es/resource/6342146/reported-speech-quiz" target="_blank" rel="noopener"><div class="ww-icon">📝</div><div class="ww-label">Reported Speech<br>Quiz</div><span class="ww-badge">Wordwall</span></a>
+      <a class="ww-card w1" href="https://wordwall.net/es/resource/5353281/reported-speech" target="_blank" rel="noopener"><div class="ww-icon">⭐</div><div class="ww-label">Reported Speech<br>Activity 3</div><span class="ww-badge">Wordwall</span></a>
     </div>
   </div>
 </section>
 
-</div><!-- /wrap -->
+</div><!-- /wrap W1 -->
+</div><!-- /panel1 -->
 
-<footer>Reported Speech · English Grammar · Grade 7 · A2+/B1 &nbsp;·&nbsp; Made with ❤️ for learners</footer>
+
+<!-- ════════════════════════════════════════════
+     WEEK 2 PANEL
+════════════════════════════════════════════ -->
+<div class="week-panel week2-panel" id="panel2">
+
+<header class="hero w2">
+  <div class="hero-pill">English Grammar · A2+ / B1 · Grade 7 · Week 2</div>
+  <h1>Comparative Adverbs</h1>
+  <p>Comparing Actions — How We Do Things Differently</p>
+</header>
+
+<div class="wrap">
+
+<!-- W2 INTRO -->
+<section class="section" id="w2-intro">
+  <div class="sec-head"><div class="sec-icon w2">📖</div><h2 class="w2">Introduction</h2></div>
+  <div class="card">
+    <p><strong>Adverbs</strong> describe <em>how, when, where, or how much</em> an action is done. <span class="hl w2">Comparative adverbs</span> compare the way two people or things perform an action.</p>
+    <div class="rule w2">
+      <p>🏃 <strong>Simple:</strong> Maria runs <u>fast</u>.</p>
+      <p>⚡ <strong>Comparative:</strong> Maria runs <u>faster than</u> Tom.</p>
+      <p>📐 <strong>Comparative:</strong> Tom speaks <u>more carefully than</u> Maria.</p>
+    </div>
+    <ul>
+      <li>We use <strong>than</strong> to introduce the second thing being compared.</li>
+      <li>Short adverbs (1 syllable) usually add <strong>-er</strong>.</li>
+      <li>Long adverbs (2+ syllables, ending in <em>-ly</em>) use <strong>more + adverb</strong>.</li>
+      <li>Some adverbs are <strong>irregular</strong> (well → better, badly → worse).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- W2 RULES -->
+<section class="section" id="w2-rules">
+  <div class="sec-head"><div class="sec-icon w2">📏</div><h2 class="w2">Formation Rules</h2></div>
+  <div class="card">
+    <div class="rule w2">
+      <p><strong>Rule 1 — Short adverbs:</strong> add <strong>-er</strong> (and <em>-er than</em> in a sentence)</p>
+      <p style="margin-left:.8rem">fast → <strong>faster</strong> &nbsp;|&nbsp; hard → <strong>harder</strong> &nbsp;|&nbsp; late → <strong>later</strong> &nbsp;|&nbsp; high → <strong>higher</strong></p>
+    </div>
+    <div class="rule w2" style="margin-top:.5rem">
+      <p><strong>Rule 2 — Long adverbs (-ly):</strong> use <strong>more + adverb</strong></p>
+      <p style="margin-left:.8rem">carefully → <strong>more carefully</strong> &nbsp;|&nbsp; quickly → <strong>more quickly</strong></p>
+      <p style="margin-left:.8rem">slowly → <strong>more slowly</strong> &nbsp;|&nbsp; quietly → <strong>more quietly</strong></p>
+    </div>
+    <div class="rule w2" style="margin-top:.5rem">
+      <p><strong>Rule 3 — Irregular adverbs:</strong> completely different forms</p>
+      <p style="margin-left:.8rem">well → <strong>better</strong> &nbsp;|&nbsp; badly → <strong>worse</strong> &nbsp;|&nbsp; far → <strong>further / farther</strong> &nbsp;|&nbsp; little → <strong>less</strong></p>
+    </div>
+    <div class="pair" style="margin-top:1rem">
+      <div class="ex-d w2"><div class="ex-lbl">Simple Adverb</div>She sings <u>beautifully</u>.</div>
+      <div class="ex-r"><div class="ex-lbl">Comparative</div>She sings <u>more beautifully</u> than her sister.</div>
+    </div>
+    <div class="pair">
+      <div class="ex-d w2"><div class="ex-lbl">Simple Adverb</div>He works <u>hard</u>.</div>
+      <div class="ex-r"><div class="ex-lbl">Comparative</div>He works <u>harder than</u> his brother.</div>
+    </div>
+    <div class="pair">
+      <div class="ex-d w2"><div class="ex-lbl">Simple Adverb</div>She speaks <u>well</u>.</div>
+      <div class="ex-r"><div class="ex-lbl">Comparative</div>She speaks <u>better than</u> me.</div>
+    </div>
+  </div>
+</section>
+
+<!-- W2 TABLE -->
+<section class="section" id="w2-table">
+  <div class="sec-head"><div class="sec-icon w2">🔄</div><h2 class="w2">Reference Table</h2></div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr class="w2"><th>Adverb</th><th>Comparative</th><th>Type</th><th>Example sentence</th></tr></thead>
+        <tbody>
+          <tr><td>fast</td><td>faster</td><td>Short (+er)</td><td>She runs faster than he does.</td></tr>
+          <tr><td>hard</td><td>harder</td><td>Short (+er)</td><td>He studies harder than his classmates.</td></tr>
+          <tr><td>late</td><td>later</td><td>Short (+er)</td><td>They arrived later than us.</td></tr>
+          <tr><td>high</td><td>higher</td><td>Short (+er)</td><td>The bird flew higher than the kite.</td></tr>
+          <tr><td>early</td><td>earlier</td><td>Short (y→ier)</td><td>She woke up earlier than her brother.</td></tr>
+          <tr><td>slowly</td><td>more slowly</td><td>Long (more+)</td><td>The turtle moved more slowly than the rabbit.</td></tr>
+          <tr><td>carefully</td><td>more carefully</td><td>Long (more+)</td><td>She writes more carefully than before.</td></tr>
+          <tr><td>quickly</td><td>more quickly</td><td>Long (more+)</td><td>He finished more quickly than the others.</td></tr>
+          <tr><td>quietly</td><td>more quietly</td><td>Long (more+)</td><td>Please speak more quietly than usual.</td></tr>
+          <tr><td>well</td><td>better</td><td>Irregular</td><td>She dances better than anyone in class.</td></tr>
+          <tr><td>badly</td><td>worse</td><td>Irregular</td><td>He performed worse than last time.</td></tr>
+          <tr><td>far</td><td>further / farther</td><td>Irregular</td><td>She walked further than expected.</td></tr>
+          <tr><td>little</td><td>less</td><td>Irregular</td><td>He eats less than his sister.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- W2 MORE EXAMPLES -->
+<section class="section" id="w2-examples">
+  <div class="sec-head"><div class="sec-icon w2">💡</div><h2 class="w2">More Examples</h2></div>
+  <div class="card">
+    <div class="pair"><div class="ex-d w2"><div class="ex-lbl">Simple</div>Leo speaks <u>loudly</u>.</div><div class="ex-r"><div class="ex-lbl">Comparative</div>Leo speaks <u>more loudly</u> than Sam.</div></div>
+    <div class="pair"><div class="ex-d w2"><div class="ex-lbl">Simple</div>Ana swims <u>well</u>.</div><div class="ex-r"><div class="ex-lbl">Comparative</div>Ana swims <u>better</u> than her coach.</div></div>
+    <div class="pair"><div class="ex-d w2"><div class="ex-lbl">Simple</div>The snail moves <u>slowly</u>.</div><div class="ex-r"><div class="ex-lbl">Comparative</div>The snail moves <u>more slowly</u> than the ant.</div></div>
+    <div class="pair"><div class="ex-d w2"><div class="ex-lbl">Simple</div>He runs <u>fast</u>.</div><div class="ex-r"><div class="ex-lbl">Comparative</div>He runs <u>faster</u> than his brother.</div></div>
+    <div class="pair"><div class="ex-d w2"><div class="ex-lbl">Simple</div>She did <u>badly</u> in the test.</div><div class="ex-r"><div class="ex-lbl">Comparative</div>She did <u>worse</u> than she expected.</div></div>
+    <div class="pair"><div class="ex-d w2"><div class="ex-lbl">Simple</div>He arrived <u>early</u>.</div><div class="ex-r"><div class="ex-lbl">Comparative</div>He arrived <u>earlier</u> than the teacher.</div></div>
+  </div>
+</section>
+
+<!-- W2 VIDEOS -->
+<section class="section" id="w2-videos">
+  <div class="sec-head"><div class="sec-icon w2">🎬</div><h2 class="w2">Explanatory Videos</h2></div>
+  <div class="vid-grid">
+    <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/lAUcmpaJrVI" allowfullscreen loading="lazy" title="Comparative Adverbs Video 1"></iframe></div>
+    <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/HM_srAysziA" allowfullscreen loading="lazy" title="Comparative Adverbs Video 2"></iframe></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EXERCISES WEEK 2 ───────────────────── -->
+
+<!-- W2-A MC -->
+<section class="section" id="w2-mc">
+  <div class="ex-block">
+    <div class="ex-head w2"><h3>A · Multiple Choice</h3><p>Choose the correct comparative adverb form — A, B, or C.</p></div>
+    <div class="ex-body">
+      <div class="solved w2"><span class="stag">Solved Example</span><p>She runs _______ than her sister. (fast)</p><p>✅ <strong>B) faster</strong> — "fast" is a short adverb, so we add <em>-er</em>.</p></div>
+      <div id="w2-mc-qs"></div>
+      <button class="btn btn-w2" onclick="checkW2MC()">✅ Check Answers</button>
+      <div class="score-reveal w2" id="w2-mc-score"></div>
+    </div>
+  </div>
+</section>
+
+<!-- W2-B FILL -->
+<section class="section" id="w2-fill">
+  <div class="ex-block">
+    <div class="ex-head w2"><h3>B · Fill in the Blank</h3><p>Write the comparative form of the adverb in parentheses.</p></div>
+    <div class="ex-body">
+      <div class="solved w2"><span class="stag">Solved Example</span><p>He speaks _______ than his brother. (clearly)</p><p>✅ <strong>more clearly</strong> — long adverb ending in -ly → use "more".</p></div>
+      <div id="w2-fill-qs"></div>
+      <button class="btn btn-w2" onclick="checkW2Fill()">✅ Check Answers</button>
+      <div class="score-reveal w2" id="w2-fill-score"></div>
+    </div>
+  </div>
+</section>
+
+<!-- W2-C MATCH -->
+<section class="section" id="w2-match">
+  <div class="ex-block">
+    <div class="ex-head w2"><h3>C · Matching Activity</h3><p>Match each sentence with its correct comparative adverb form.</p></div>
+    <div class="ex-body">
+      <div class="solved w2"><span class="stag">Solved Example</span><p>"She dances _______ than her classmates." (well) → <strong>better</strong> — irregular comparative.</p></div>
+      <div id="w2-match-qs"></div>
+      <button class="btn btn-w2" onclick="checkW2Match()">✅ Check Answers</button>
+      <div class="score-reveal w2" id="w2-match-score"></div>
+    </div>
+  </div>
+</section>
+
+<!-- W2-D READING -->
+<section class="section" id="w2-reading">
+  <div class="ex-block">
+    <div class="ex-head w2"><h3>D · Reading Comprehension</h3><p>Read the text carefully, then answer the 5 questions below.</p></div>
+    <div class="ex-body">
+      <div class="read-text w2">
+        <p><strong>📄 The School Sports Day</strong></p>
+        <p>Last Friday, Lincoln School held its annual Sports Day. Many students participated in different competitions. In the 100-metre race, Carlos ran <strong>faster than</strong> all the other students and won first place. His friend Diego ran quickly too, but Carlos ran <strong>more quickly than</strong> Diego.</p>
+        <p>In the swimming competition, Sofia performed <strong>better than</strong> last year because she had been training harder. Her teammate Lucy swam well, but Sofia swam <strong>more confidently than</strong> anyone else in the pool.</p>
+        <p>The long jump was very exciting. Pedro jumped <strong>further than</strong> his rivals, but he also landed <strong>less gracefully than</strong> expected and nearly fell over. Everyone laughed kindly. The teachers said the students had all worked <strong>harder than</strong> in previous years, and the results showed it clearly.</p>
+      </div>
+      <div id="w2-reading-qs"></div>
+      <button class="btn btn-w2" onclick="checkW2Reading()">✅ Check Answers</button>
+      <div class="score-reveal w2" id="w2-reading-score"></div>
+    </div>
+  </div>
+</section>
+
+<!-- W2-E CORRECT -->
+<section class="section" id="w2-correct">
+  <div class="ex-block">
+    <div class="ex-head w2"><h3>E · Correct the Mistake</h3><p>Each sentence has one error in the comparative adverb. Choose the corrected version.</p></div>
+    <div class="ex-body">
+      <div class="solved w2"><span class="stag">Solved Example</span><p>❌ She sings <u>more loud</u> than her friend.</p><p>✅ <strong>She sings <u>more loudly</u> than her friend.</strong> — "loudly" is the correct adverb form.</p></div>
+      <div id="w2-correct-qs"></div>
+      <button class="btn btn-w2" onclick="checkW2Correct()">✅ Check Answers</button>
+      <div class="score-reveal w2" id="w2-correct-score"></div>
+    </div>
+  </div>
+</section>
+
+<!-- W2-F TRANSFORM -->
+<section class="section" id="w2-transform">
+  <div class="ex-block">
+    <div class="ex-head w2"><h3>F · Transform the Sentences</h3><p>Rewrite each sentence using the comparative adverb form of the word in brackets.</p></div>
+    <div class="ex-body">
+      <div class="solved w2"><span class="stag">Solved Example</span><p>Tom runs fast. Ana runs fast too, but more. [fast] → Ana runs <strong>faster than</strong> Tom.</p><p style="font-size:.83rem;color:var(--muted);margin-top:.3rem">💡 Write the complete new sentence.</p></div>
+      <div id="w2-transform-qs"></div>
+      <button class="btn btn-w2" onclick="checkW2Transform()">✅ Check Answers</button>
+      <div class="score-reveal w2" id="w2-transform-score"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCORE W2 -->
+<section id="w2-score">
+  <div class="total-box w2">
+    <h2>🏆 My Total Score — Week 2</h2>
+    <div class="big" id="w2-total-num">— / —</div>
+    <p id="w2-total-msg">Complete all exercises, then press the button to see your final result.</p>
+    <br>
+    <button class="btn btn-w2-accent" onclick="calcW2Total()">Calculate My Total Score</button>
+  </div>
+</section>
+
+<!-- EXTRA W2 -->
+<section class="section" id="w2-extra">
+  <div class="sec-head"><div class="sec-icon w2">🎮</div><h2 class="w2">Extra Practice</h2></div>
+  <div class="extra-section">
+    <p>Try these interactive activities to practise Comparative Adverbs! Click any card to open in a new tab.</p>
+    <div class="wordwall-grid">
+      <a class="ww-card w2" href="https://wordwall.net/resource/98478551/comparative-adverbs" target="_blank" rel="noopener"><div class="ww-icon">🔁</div><div class="ww-label">Comparative Adverbs<br>Activity 1</div><span class="ww-badge">Wordwall</span></a>
+      <a class="ww-card w2" href="https://wordwall.net/resource/64602949/comparative-adverbs" target="_blank" rel="noopener"><div class="ww-icon">🧩</div><div class="ww-label">Comparative Adverbs<br>Activity 2</div><span class="ww-badge">Wordwall</span></a>
+      <a class="ww-card w2" href="https://www.liveworksheets.com/worksheet/en/english-second-language-esl/1120726" target="_blank" rel="noopener"><div class="ww-icon">📝</div><div class="ww-label">Live Worksheet 1<br>(ESL Practice)</div><span class="ww-badge">Liveworksheets</span></a>
+      <a class="ww-card w2" href="https://www.liveworksheets.com/worksheet/en/english-second-language-esl/2246685" target="_blank" rel="noopener"><div class="ww-icon">⭐</div><div class="ww-label">Live Worksheet 2<br>(ESL Practice)</div><span class="ww-badge">Liveworksheets</span></a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /wrap W2 -->
+</div><!-- /panel2 -->
+
+<footer id="mainFooter">Reported Speech &amp; Comparative Adverbs · English Grammar · Grade 7 · A2+/B1 &nbsp;·&nbsp; Made with ❤️ for learners</footer>
 
 <!-- ══ JAVASCRIPT ════════════════════════════ -->
 <script>
+/* ── WEEK TABS ──────────────────────────────── */
+function switchWeek(n) {
+  document.getElementById('panel1').classList.toggle('active', n===1);
+  document.getElementById('panel2').classList.toggle('active', n===2);
+  document.getElementById('tab1').classList.toggle('active', n===1);
+  document.getElementById('tab2').classList.toggle('active', n===2);
+  // navbar colour
+  const nav = document.getElementById('mainNav');
+  const drawer = document.getElementById('navDrawer');
+  nav.classList.toggle('week2', n===2);
+  drawer.classList.toggle('week2', n===2);
+  // drawer links
+  document.getElementById('drawerW1Label').style.display = n===1?'':'none';
+  document.getElementById('drawerW1Links').style.display  = n===1?'':'none';
+  document.getElementById('drawerW2Label').style.display = n===2?'':'none';
+  document.getElementById('drawerW2Links').style.display  = n===2?'':'none';
+  // scroll to top
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
 /* ── HAMBURGER MENU ───────────────────────── */
 const toggle  = document.getElementById('navToggle');
 const drawer  = document.getElementById('navDrawer');
@@ -706,414 +845,235 @@ function closeMenu() {
   toggle.classList.remove('open');
 }
 
-/* ══ EXERCISE DATA ══════════════════════════ */
-
-/* A – Multiple Choice (10 questions)
-   ans = index of correct option (0=A, 1=B, 2=C) */
+/* ══════════════════════════════════════════════
+   WEEK 1 DATA & LOGIC
+══════════════════════════════════════════════ */
 const mcData = [
-  {
-    q: '1. Direct: "I <u>am</u> the captain of the team." → She said she _______.',
-    opts: ['A) am the captain', 'B) was the captain', 'C) is the captain'],
-    ans: 1   // B) was the captain
-  },
-  {
-    q: '2. Direct: "They <u>are</u> watching a movie." → He said they _______.',
-    opts: ['A) are watching a movie', 'B) were watching a movie', 'C) watch a movie'],
-    ans: 1   // B) were watching
-  },
-  {
-    q: '3. Direct: "She <u>does</u> her homework every day." → He said she _______ her homework every day.',
-    opts: ['A) does', 'B) do', 'C) did'],
-    ans: 2   // C) did
-  },
-  {
-    q: '4. Direct: "I <u>have</u> a new phone." → She said she _______ a new phone.',
-    opts: ['A) has', 'B) have', 'C) had'],
-    ans: 2   // C) had
-  },
-  {
-    q: '5. Direct: "He <u>can</u> speak French." → She said he _______ speak French.',
-    opts: ['A) can', 'B) could', 'C) will'],
-    ans: 1   // B) could
-  },
-  {
-    q: '6. Direct: "We <u>will</u> visit the museum." → They said they _______ visit the museum.',
-    opts: ['A) will', 'B) can', 'C) would'],
-    ans: 2   // C) would
-  },
-  {
-    q: '7. Direct: "I <u>study</u> English every evening." → He said he _______ English every evening.',
-    opts: ['A) studies', 'B) studied', 'C) is studying'],
-    ans: 1   // B) studied
-  },
-  {
-    q: '8. Direct: "She <u>is cooking</u> dinner." → He said she _______ dinner.',
-    opts: ['A) is cooking', 'B) was cooking', 'C) cooked'],
-    ans: 1   // B) was cooking
-  },
-  {
-    q: '9. Direct: "Do you <u>have</u> a pen?" → She asked if I _______ a pen.',
-    opts: ['A) have', 'B) has', 'C) had'],
-    ans: 2   // C) had
-  },
-  {
-    q: '10. Direct: "Where <u>do</u> you <u>live</u>?" → He asked me where I _______.',
-    opts: ['A) lived', 'B) live', 'C) was living'],
-    ans: 0   // A) lived
-  }
+  {q:'1. Direct: "I <u>am</u> the captain of the team." → She said she _______.', opts:['A) am the captain','B) was the captain','C) is the captain'], ans:1},
+  {q:'2. Direct: "They <u>are</u> watching a movie." → He said they _______.', opts:['A) are watching a movie','B) were watching a movie','C) watch a movie'], ans:1},
+  {q:'3. Direct: "She <u>does</u> her homework every day." → He said she _______ her homework every day.', opts:['A) does','B) do','C) did'], ans:2},
+  {q:'4. Direct: "I <u>have</u> a new phone." → She said she _______ a new phone.', opts:['A) has','B) have','C) had'], ans:2},
+  {q:'5. Direct: "He <u>can</u> speak French." → She said he _______ speak French.', opts:['A) can','B) could','C) will'], ans:1},
+  {q:'6. Direct: "We <u>will</u> visit the museum." → They said they _______ visit the museum.', opts:['A) will','B) can','C) would'], ans:2},
+  {q:'7. Direct: "I <u>study</u> English every evening." → He said he _______ English every evening.', opts:['A) studies','B) studied','C) is studying'], ans:1},
+  {q:'8. Direct: "She <u>is cooking</u> dinner." → He said she _______ dinner.', opts:['A) is cooking','B) was cooking','C) cooked'], ans:1},
+  {q:'9. Direct: "Do you <u>have</u> a pen?" → She asked if I _______ a pen.', opts:['A) have','B) has','C) had'], ans:2},
+  {q:'10. Direct: "Where <u>do</u> you <u>live</u>?" → He asked me where I _______.', opts:['A) lived','B) live','C) was living'], ans:0}
 ];
 
-/* B – Fill in the Blank (10 questions)
-   blank = the single correct answer (case-insensitive check) */
 const fillData = [
-  { pre: 'She said she',        blank: 'was',          post: 'very happy. (Direct: "I am very happy.")' },
-  { pre: 'He told me they',     blank: 'were',          post: 'late for class. (Direct: "We are late.")' },
-  { pre: 'She said she',        blank: 'had',           post: 'three brothers. (Direct: "I have three brothers.")' },
-  { pre: 'He said he',          blank: 'could',         post: 'play basketball. (Direct: "I can play basketball.")' },
-  { pre: 'She said it',         blank: 'would',         post: 'rain that afternoon. (Direct: "It will rain.")' },
-  { pre: 'He said she',         blank: 'did',           post: 'her chores every day. (Direct: "She does her chores.")' },
-  { pre: 'She said he',         blank: 'worked',        post: 'in a hospital. (Direct: "He works in a hospital.")' },
-  { pre: 'He said they',        blank: 'were playing',  post: 'football. (Direct: "They are playing football.")' },
-  { pre: 'She asked if I',      blank: 'was',           post: 'tired. (Direct: "Are you tired?")' },
-  { pre: 'He asked where she',  blank: 'lived',         post: '. (Direct: "Where does she live?")' }
+  {pre:'She said she', blank:'was', post:'very happy. (Direct: "I am very happy.")'},
+  {pre:'He told me they', blank:'were', post:'late for class. (Direct: "We are late.")'},
+  {pre:'She said she', blank:'had', post:'three brothers. (Direct: "I have three brothers.")'},
+  {pre:'He said he', blank:'could', post:'play basketball. (Direct: "I can play basketball.")'},
+  {pre:'She said it', blank:'would', post:'rain that afternoon. (Direct: "It will rain.")'},
+  {pre:'He said she', blank:'did', post:'her chores every day. (Direct: "She does her chores.")'},
+  {pre:'She said he', blank:'worked', post:'in a hospital. (Direct: "He works in a hospital.")'},
+  {pre:'He said they', blank:'were playing', post:'football. (Direct: "They are playing football.")'},
+  {pre:'She asked if I', blank:'was', post:'tired. (Direct: "Are you tired?")'},
+  {pre:'He asked where she', blank:'lived', post:'. (Direct: "Where does she live?")'}
 ];
 
-/* C – Matching (10 pairs) */
 const matchData = [
-  { d: '"I am a teacher."',              r: 'She said she was a teacher.' },
-  { d: '"We are going to the park."',    r: 'They said they were going to the park.' },
-  { d: '"He has a dog."',                r: 'She said he had a dog.' },
-  { d: '"I can run fast."',              r: 'He said he could run fast.' },
-  { d: '"She will help you."',           r: 'He said she would help me.' },
-  { d: '"I study every night."',         r: 'She said she studied every night.' },
-  { d: '"They are dancing."',            r: 'He said they were dancing.' },
-  { d: '"Do you have a ticket?"',        r: 'She asked if I had a ticket.' },
-  { d: '"Where do you work?"',           r: 'He asked where I worked.' },
-  { d: '"Are you hungry?"',              r: 'She asked if I was hungry.' }
+  {d:'"I am a teacher."', r:'She said she was a teacher.'},
+  {d:'"We are going to the park."', r:'They said they were going to the park.'},
+  {d:'"He has a dog."', r:'She said he had a dog.'},
+  {d:'"I can run fast."', r:'He said he could run fast.'},
+  {d:'"She will help you."', r:'He said she would help me.'},
+  {d:'"I study every night."', r:'She said she studied every night.'},
+  {d:'"They are dancing."', r:'He said they were dancing.'},
+  {d:'"Do you have a ticket?"', r:'She asked if I had a ticket.'},
+  {d:'"Where do you work?"', r:'He asked where I worked.'},
+  {d:'"Are you hungry?"', r:'She asked if I was hungry.'}
 ];
 
-/* D – Reading Comprehension (5 questions) */
 const rdData = [
-  {
-    q: '1. What did Lucia say about her English class?',
-    opts: ['A) She said she hated it.', 'B) She said she loved it.', 'C) She said she was afraid of it.'],
-    ans: 1
-  },
-  {
-    q: '2. What was Lucia preparing?',
-    opts: ['A) A school report.', 'B) A concert performance.', 'C) A project about endangered animals.'],
-    ans: 2
-  },
-  {
-    q: '3. What did Marco say he could do?',
-    opts: ['A) Play the piano.', 'B) Play the guitar.', 'C) Sing in the school choir.'],
-    ans: 1
-  },
-  {
-    q: '4. How did Marco feel about the upcoming concert?',
-    opts: ['A) He was nervous and sad.', 'B) He was a little nervous but excited.', 'C) He was completely relaxed.'],
-    ans: 1
-  },
-  {
-    q: '5. What did Lucia ask the journalist at the end?',
-    opts: ['A) She asked what his job was.', 'B) She asked where he lived.', 'C) She asked what his favourite subject had been at school.'],
-    ans: 2
-  }
+  {q:'1. What did Lucia say about her English class?', opts:['A) She said she hated it.','B) She said she loved it.','C) She said she was afraid of it.'], ans:1},
+  {q:'2. What was Lucia preparing?', opts:['A) A school report.','B) A concert performance.','C) A project about endangered animals.'], ans:2},
+  {q:'3. What did Marco say he could do?', opts:['A) Play the piano.','B) Play the guitar.','C) Sing in the school choir.'], ans:1},
+  {q:'4. How did Marco feel about the upcoming concert?', opts:['A) He was nervous and sad.','B) He was a little nervous but excited.','C) He was completely relaxed.'], ans:1},
+  {q:'5. What did Lucia ask the journalist at the end?', opts:['A) She asked what his job was.','B) She asked where he lived.','C) She asked what his favourite subject had been at school.'], ans:2}
 ];
 
-/* E – Correct the Mistake (8 questions)
-   Each item: wrong sentence shown, options A/B/C, ans = index of correct one */
 const crData = [
-  {
-    w:   'She said she <u>is</u> tired.',
-    opts: ['A) She said she are tired.', 'B) She said she was tired.', 'C) She said she were tired.'],
-    ans: 1, ex: '"is" → "was"'
-  },
-  {
-    w:   'He said they <u>are</u> playing outside.',
-    opts: ['A) He said they were playing outside.', 'B) He said they is playing outside.', 'C) He said they played outside.'],
-    ans: 0, ex: '"are playing" → "were playing"'
-  },
-  {
-    w:   'She said she <u>can</u> swim.',
-    opts: ['A) She said she will swim.', 'B) She said she could swim.', 'C) She said she is swimming.'],
-    ans: 1, ex: '"can" → "could"'
-  },
-  {
-    w:   'He said he <u>will</u> call me.',
-    opts: ['A) He said he would call me.', 'B) He said he can call me.', 'C) He said he calls me.'],
-    ans: 0, ex: '"will" → "would"'
-  },
-  {
-    w:   'She asked if I <u>have</u> a pencil.',
-    opts: ['A) She asked if I had a pencil.', 'B) She asked if I am having a pencil.', 'C) She asked if I was having a pencil.'],
-    ans: 0, ex: '"have" → "had"'
-  },
-  {
-    w:   'He asked where she <u>lives</u>.',
-    opts: ['A) He asked where she is living.', 'B) He asked where she lived.', 'C) He asked where she was live.'],
-    ans: 1, ex: '"lives" → "lived"'
-  },
-  {
-    w:   'She said she <u>has</u> two cats.',
-    opts: ['A) She said she is having two cats.', 'B) She said she have two cats.', 'C) She said she had two cats.'],
-    ans: 2, ex: '"has" → "had"'
-  },
-  {
-    w:   'He said he <u>does</u> exercise every day.',
-    opts: ['A) He said he does exercise every day.', 'B) He said he did exercise every day.', 'C) He said he do exercise every day.'],
-    ans: 1, ex: '"does" → "did"'
-  }
+  {w:'She said she <u>is</u> tired.', opts:['A) She said she are tired.','B) She said she was tired.','C) She said she were tired.'], ans:1, ex:'"is" → "was"'},
+  {w:'He said they <u>are</u> playing outside.', opts:['A) He said they were playing outside.','B) He said they is playing outside.','C) He said they played outside.'], ans:0, ex:'"are playing" → "were playing"'},
+  {w:'She said she <u>can</u> swim.', opts:['A) She said she will swim.','B) She said she could swim.','C) She said she is swimming.'], ans:1, ex:'"can" → "could"'},
+  {w:'He said he <u>will</u> call me.', opts:['A) He said he would call me.','B) He said he can call me.','C) He said he calls me.'], ans:0, ex:'"will" → "would"'},
+  {w:'She asked if I <u>have</u> a pencil.', opts:['A) She asked if I had a pencil.','B) She asked if I am having a pencil.','C) She asked if I was having a pencil.'], ans:0, ex:'"have" → "had"'},
+  {w:'He asked where she <u>lives</u>.', opts:['A) He asked where she is living.','B) He asked where she lived.','C) He asked where she was live.'], ans:1, ex:'"lives" → "lived"'},
+  {w:'She said she <u>has</u> two cats.', opts:['A) She said she is having two cats.','B) She said she have two cats.','C) She said she had two cats.'], ans:2, ex:'"has" → "had"'},
+  {w:'He said he <u>does</u> exercise every day.', opts:['A) He said he does exercise every day.','B) He said he did exercise every day.','C) He said he do exercise every day.'], ans:1, ex:'"does" → "did"'}
 ];
 
-/* F – Transform the Sentences (10 questions)
-   accepts = array of valid answers (all compared lowercase, period stripped) */
 const trData = [
-  {
-    p: '"I <u>am</u> a student." (She said…)',
-    a: ['she said she was a student', 'she said that she was a student']
-  },
-  {
-    p: '"We <u>are</u> eating lunch." (He said…)',
-    a: ['he said they were eating lunch', 'he said that they were eating lunch']
-  },
-  {
-    p: '"She <u>has</u> a new bag." (He said…)',
-    a: ['he said she had a new bag', 'he said that she had a new bag']
-  },
-  {
-    p: '"I <u>can</u> ride a bike." (She said…)',
-    a: ['she said she could ride a bike', 'she said that she could ride a bike']
-  },
-  {
-    p: '"He <u>will</u> arrive soon." (She said…)',
-    a: ['she said he would arrive soon', 'she said that he would arrive soon']
-  },
-  {
-    p: '"They <u>study</u> hard." (She said…)',
-    a: ['she said they studied hard', 'she said that they studied hard']
-  },
-  {
-    p: '"I <u>am playing</u> chess." (He said…)',
-    a: ['he said he was playing chess', 'he said that he was playing chess']
-  },
-  {
-    p: '"Do you <u>have</u> a ruler?" (She asked…)',
-    a: ['she asked if i had a ruler', 'she asked whether i had a ruler']
-  },
-  {
-    p: '"Where <u>do</u> you <u>live</u>?" (He asked…)',
-    a: ['he asked where i lived', 'he asked where she lived']
-  },
-  {
-    p: '"Are you <u>tired</u>?" (She asked…)',
-    a: ['she asked if i was tired', 'she asked whether i was tired',
-        'she asked if he was tired', 'she asked whether he was tired']
-  }
+  {p:'"I <u>am</u> a student." (She said…)', a:['she said she was a student','she said that she was a student']},
+  {p:'"We <u>are</u> eating lunch." (He said…)', a:['he said they were eating lunch','he said that they were eating lunch']},
+  {p:'"She <u>has</u> a new bag." (He said…)', a:['he said she had a new bag','he said that she had a new bag']},
+  {p:'"I <u>can</u> ride a bike." (She said…)', a:['she said she could ride a bike','she said that she could ride a bike']},
+  {p:'"He <u>will</u> arrive soon." (She said…)', a:['she said he would arrive soon','she said that he would arrive soon']},
+  {p:'"They <u>study</u> hard." (She said…)', a:['she said they studied hard','she said that they studied hard']},
+  {p:'"I <u>am playing</u> chess." (He said…)', a:['he said he was playing chess','he said that he was playing chess']},
+  {p:'"Do you <u>have</u> a ruler?" (She asked…)', a:['she asked if i had a ruler','she asked whether i had a ruler']},
+  {p:'"Where <u>do</u> you <u>live</u>?" (He asked…)', a:['he asked where i lived','he asked where she lived']},
+  {p:'"Are you <u>tired</u>?" (She asked…)', a:['she asked if i was tired','she asked whether i was tired','she asked if he was tired','she asked whether he was tired']}
 ];
 
-/* ══ RENDER FUNCTIONS ═══════════════════════ */
+const scores = {mc:0,fill:0,match:0,rd:0,cr:0,tr:0};
+const totals  = {mc:mcData.length,fill:fillData.length,match:matchData.length,rd:rdData.length,cr:crData.length,tr:trData.length};
 
-// Helper: builds radio-button HTML for a question
-function radios(name, i, opts) {
-  return `<div class="opts">${
-    opts.map((o, j) => `<label><input type="radio" name="${name}_${i}" value="${j}"> ${o}</label>`).join('')
-  }</div>`;
+function radios(name,i,opts,cls='w1-radio'){
+  return `<div class="opts">${opts.map((o,j)=>`<label><input type="radio" name="${name}_${i}" value="${j}" class="${cls}"> ${o}</label>`).join('')}</div>`;
+}
+function setFb(id,ok,hint){
+  const el=document.getElementById(id);
+  el.className='fb '+(ok?'ok':'no');
+  el.textContent=ok?'✅ Correct!':'❌ Try again. '+(hint||'');
+}
+function showScore(id,got,tot,cls='w1'){
+  const el=document.getElementById(id);
+  el.style.display='block';el.className='score-reveal '+cls;
+  const pct=Math.round(got/tot*100);
+  const msg=pct>=80?'🎉 Excellent work!':pct>=60?'👍 Good job!':'📚 Keep practicing!';
+  el.innerHTML=`<div class="snum">${got} / ${tot}</div><p>${msg} (${pct}%)</p>`;
 }
 
-function renderMC() {
-  document.getElementById('mc-qs').innerHTML = mcData.map((d, i) => `
-    <div class="qb">
-      <div class="qt">${d.q}</div>
-      ${radios('mc', i, d.opts)}
-      <div class="fb" id="mc_fb_${i}"></div>
-    </div>`).join('');
+function renderMC(){
+  document.getElementById('mc-qs').innerHTML=mcData.map((d,i)=>`<div class="qb"><div class="qt">${d.q}</div>${radios('mc',i,d.opts)}<div class="fb" id="mc_fb_${i}"></div></div>`).join('');
+}
+function renderFill(){
+  document.getElementById('fill-qs').innerHTML=fillData.map((d,i)=>`<div class="qb"><div class="qt">${i+1}. ${d.pre} _______ ${d.post}</div><input class="txt-in w1" id="fill_${i}" type="text" placeholder="Type the missing word…" autocomplete="off"><div class="fb" id="fill_fb_${i}"></div></div>`).join('');
+}
+function renderMatch(){
+  const allOpts=matchData.map(d=>`<option value="${d.r}">${d.r}</option>`).join('');
+  document.getElementById('match-qs').innerHTML=matchData.map((d,i)=>`<div class="qb"><div class="qt">${i+1}. Direct speech: ${d.d}</div><div class="match-row"><div class="match-pill">${d.d}</div><select class="match-sel w1" id="match_${i}"><option value="">— Select reported speech —</option>${allOpts}</select></div><div class="fb" id="match_fb_${i}"></div></div>`).join('');
+}
+function renderReading(){
+  document.getElementById('reading-qs').innerHTML=rdData.map((d,i)=>`<div class="qb"><div class="qt">${d.q}</div>${radios('rd',i,d.opts)}<div class="fb" id="rd_fb_${i}"></div></div>`).join('');
+}
+function renderCorrect(){
+  document.getElementById('correct-qs').innerHTML=crData.map((d,i)=>`<div class="qb"><div class="qt">${i+1}. ❌ Incorrect sentence: ${d.w}</div>${radios('cr',i,d.opts)}<div class="fb" id="cr_fb_${i}"></div></div>`).join('');
+}
+function renderTransform(){
+  document.getElementById('transform-qs').innerHTML=trData.map((d,i)=>`<div class="qb"><div class="tr-prompt w1">${i+1}. ${d.p}</div><input class="txt-in txt-wide w1" id="tr_${i}" type="text" placeholder="Write the reported speech sentence here…" autocomplete="off"><div class="fb" id="tr_fb_${i}"></div></div>`).join('');
 }
 
-function renderFill() {
-  document.getElementById('fill-qs').innerHTML = fillData.map((d, i) => `
-    <div class="qb">
-      <div class="qt">${i + 1}. ${d.pre} _______ ${d.post}</div>
-      <input class="txt-in" id="fill_${i}" type="text" placeholder="Type the missing word…" autocomplete="off">
-      <div class="fb" id="fill_fb_${i}"></div>
-    </div>`).join('');
+function checkMC(){let s=0;mcData.forEach((d,i)=>{const r=document.querySelector(`input[name="mc_${i}"]:checked`);if(!r){setFb(`mc_fb_${i}`,false,'Please select an option.');return;}const ok=parseInt(r.value)===d.ans;if(ok)s++;setFb(`mc_fb_${i}`,ok,ok?'':`Correct answer: ${d.opts[d.ans]}`);});scores.mc=s;showScore('mc-score',s,totals.mc);}
+function checkFill(){let s=0;fillData.forEach((d,i)=>{const el=document.getElementById(`fill_${i}`);const val=el.value.trim().toLowerCase();const ok=val===d.blank.toLowerCase();if(ok)s++;setFb(`fill_fb_${i}`,ok,ok?'':`The correct word is: "${d.blank}"`);el.style.borderColor=ok?'var(--success)':'var(--error)';});scores.fill=s;showScore('fill-score',s,totals.fill);}
+function checkMatch(){let s=0;matchData.forEach((d,i)=>{const el=document.getElementById(`match_${i}`);const ok=el.value===d.r;if(ok)s++;setFb(`match_fb_${i}`,ok,ok?'':`Correct: "${d.r}"`);});scores.match=s;showScore('match-score',s,totals.match);}
+function checkReading(){let s=0;rdData.forEach((d,i)=>{const r=document.querySelector(`input[name="rd_${i}"]:checked`);if(!r){setFb(`rd_fb_${i}`,false,'Please select an option.');return;}const ok=parseInt(r.value)===d.ans;if(ok)s++;setFb(`rd_fb_${i}`,ok,ok?'':`Correct: ${d.opts[d.ans]}`);});scores.rd=s;showScore('reading-score',s,totals.rd);}
+function checkCorrect(){let s=0;crData.forEach((d,i)=>{const r=document.querySelector(`input[name="cr_${i}"]:checked`);if(!r){setFb(`cr_fb_${i}`,false,'Please select an option.');return;}const ok=parseInt(r.value)===d.ans;if(ok)s++;setFb(`cr_fb_${i}`,ok,ok?'':`Correct: ${d.opts[d.ans]} — Rule: ${d.ex}`);});scores.cr=s;showScore('correct-score',s,totals.cr);}
+function checkTransform(){let s=0;trData.forEach((d,i)=>{const el=document.getElementById(`tr_${i}`);const val=el.value.trim().toLowerCase().replace(/\.$/,'');const ok=d.a.some(a=>val===a.toLowerCase().replace(/\.$/,''));if(ok)s++;setFb(`tr_fb_${i}`,ok,ok?'':`A possible answer: "${d.a[0]}"`);el.style.borderColor=ok?'var(--success)':'var(--error)';});scores.tr=s;showScore('transform-score',s,totals.tr);}
+function calcTotal(){const got=Object.values(scores).reduce((a,b)=>a+b,0);const tot=Object.values(totals).reduce((a,b)=>a+b,0);document.getElementById('total-num').textContent=`${got} / ${tot}`;const pct=Math.round(got/tot*100);let msg;if(pct>=90)msg='🌟 Outstanding! You have mastered Reported Speech!';else if(pct>=75)msg='👏 Great job! Keep reviewing the rules!';else if(pct>=60)msg='💪 Good effort! A bit more practice will help!';else msg='📖 Keep studying and try again — you can do it!';document.getElementById('total-msg').textContent=`${msg} (${pct}%)`;}
+
+/* ══════════════════════════════════════════════
+   WEEK 2 DATA & LOGIC
+══════════════════════════════════════════════ */
+const w2mcData = [
+  {q:'1. She works _______ than her colleague. (hard)', opts:['A) more hard','B) harder','C) hardest'], ans:1},
+  {q:'2. He drives _______ than his father. (carefully)', opts:['A) more carefully','B) carefullier','C) more careful'], ans:0},
+  {q:'3. The new student speaks English _______ than last year. (well)', opts:['A) weller','B) more well','C) better'], ans:2},
+  {q:'4. The turtle moves _______ than the rabbit. (slowly)', opts:['A) slowlier','B) more slowly','C) slower than more'], ans:1},
+  {q:'5. She arrived _______ than anyone else. (early)', opts:['A) more early','B) earlierly','C) earlier'], ans:2},
+  {q:'6. He performed _______ today than yesterday. (badly)', opts:['A) worse','B) badlier','C) more badly'], ans:0},
+  {q:'7. The plane flew _______ than the helicopter. (high)', opts:['A) more high','B) higher','C) higherly'], ans:1},
+  {q:'8. She explained the problem _______ than the teacher. (clearly)', opts:['A) more clearly','B) clearlier','C) more clear'], ans:0},
+  {q:'9. He finished the test _______ than the other students. (quickly)', opts:['A) quicklier','B) quicker','C) more quickly'], ans:2},
+  {q:'10. They travelled _______ than planned. (far)', opts:['A) more far','B) farther','C) farer'], ans:1}
+];
+
+const w2fillData = [
+  {pre:'She ran', blank:'faster', post:'than her sister. (fast)'},
+  {pre:'He studied', blank:'harder', post:'than before. (hard)'},
+  {pre:'The baby sleeps', blank:'more quietly', post:'than the older children. (quietly)'},
+  {pre:'She performed', blank:'better', post:'than last week. (well)'},
+  {pre:'He arrived', blank:'later', post:'than expected. (late)'},
+  {pre:'The car moved', blank:'more slowly', post:'in the traffic. (slowly)'},
+  {pre:'She draws', blank:'more carefully', post:'than her classmates. (carefully)'},
+  {pre:'He did', blank:'worse', post:'on the second test. (badly)'},
+  {pre:'The eagle flew', blank:'higher', post:'than the other birds. (high)'},
+  {pre:'She woke up', blank:'earlier', post:'than usual. (early)'}
+];
+
+const w2matchData = [
+  {d:'She speaks Spanish _______ than her brother. (well)', r:'better'},
+  {d:'He runs _______ than the other athletes. (fast)', r:'faster'},
+  {d:'The old man walks _______ than the children. (slowly)', r:'more slowly'},
+  {d:'She answered _______ than the others. (quickly)', r:'more quickly'},
+  {d:'He did _______ in the exam than last time. (badly)', r:'worse'},
+  {d:'The rocket flew _______ than the airplane. (high)', r:'higher'},
+  {d:'She writes _______ than her teacher. (carefully)', r:'more carefully'},
+  {d:'He woke up _______ than his alarm. (early)', r:'earlier'},
+  {d:'They studied _______ for this test. (hard)', r:'harder'},
+  {d:'She travelled _______ than planned. (far)', r:'further'}
+];
+
+const w2rdData = [
+  {q:'1. Who ran the fastest in the 100-metre race?', opts:['A) Diego','B) Carlos','C) Sofia'], ans:1},
+  {q:'2. Why did Sofia perform better this year?', opts:['A) She had a new coach.','B) She had been training harder.','C) The pool was smaller.'], ans:1},
+  {q:'3. How did Sofia swim compared to the others?', opts:['A) More quietly.','B) More slowly.','C) More confidently.'], ans:2},
+  {q:'4. What happened to Pedro after the long jump?', opts:['A) He fell over completely.','B) He landed less gracefully and nearly fell.','C) He broke a world record.'], ans:1},
+  {q:'5. What did the teachers say about the students?', opts:['A) They had worked harder than in previous years.','B) They had been less prepared than usual.','C) They needed to practise more.'], ans:0}
+];
+
+const w2crData = [
+  {w:'She runs <u>more fast</u> than her sister.', opts:['A) She runs fastlier than her sister.','B) She runs faster than her sister.','C) She runs more faster than her sister.'], ans:1, ex:'"fast" is short → use "faster", not "more fast"'},
+  {w:'He speaks <u>more good</u> than his brother.', opts:['A) He speaks more well than his brother.','B) He speaks gooder than his brother.','C) He speaks better than his brother.'], ans:2, ex:'"well" is irregular → comparative is "better"'},
+  {w:'She dances <u>more beautiful</u> than her classmates.', opts:['A) She dances beautifullier than her classmates.','B) She dances more beautifully than her classmates.','C) She dances beautifuler than her classmates.'], ans:1, ex:'Use the adverb "beautifully" → "more beautifully"'},
+  {w:'He did <u>more badly</u> than expected.', opts:['A) He did badly more than expected.','B) He did badlier than expected.','C) He did worse than expected.'], ans:2, ex:'"badly" is irregular → comparative is "worse"'},
+  {w:'The turtle moves <u>slowlier</u> than the rabbit.', opts:['A) The turtle moves more slowly than the rabbit.','B) The turtle moves slowerly than the rabbit.','C) The turtle moves most slowly than the rabbit.'], ans:0, ex:'"slowly" is a long adverb → use "more slowly"'},
+  {w:'She arrived <u>more early</u> than her friends.', opts:['A) She arrived earlierly than her friends.','B) She arrived more earlier than her friends.','C) She arrived earlier than her friends.'], ans:2, ex:'"early" → "earlier" (not "more early")'},
+  {w:'He jumped <u>more far</u> than the others.', opts:['A) He jumped further than the others.','B) He jumped farerly than the others.','C) He jumped more farther than the others.'], ans:0, ex:'"far" is irregular → comparative is "further/farther"'},
+  {w:'She explained it <u>more clear</u> than the book.', opts:['A) She explained it clearly more than the book.','B) She explained it clearerly than the book.','C) She explained it more clearly than the book.'], ans:2, ex:'Use the adverb "clearly" → "more clearly"'}
+];
+
+const w2trData = [
+  {p:'Maria runs fast. Pedro runs fast too, but more. [fast]', a:['pedro runs faster than maria','pedro runs faster than maria.']},
+  {p:'Tom studies hard. Ana studies hard too, but more. [hard]', a:['ana studies harder than tom','ana studies harder than tom.']},
+  {p:'The cat moves quietly. The mouse moves quietly too, but more. [quietly]', a:['the mouse moves more quietly than the cat','the mouse moves more quietly than the cat.']},
+  {p:'Leo plays the guitar well. Sofia plays well too, but better. [well]', a:['sofia plays the guitar better than leo','sofia plays better than leo']},
+  {p:'The bus arrived late. The train arrived late too, but later. [late]', a:['the train arrived later than the bus','the train arrived later than the bus.']},
+  {p:'Daniel runs quickly. Sarah runs quickly too, but more. [quickly]', a:['sarah runs more quickly than daniel','sarah runs more quickly than daniel.']},
+  {p:'Carlos jumped far. Lucia jumped far too, but further. [far]', a:['lucia jumped further than carlos','lucia jumped farther than carlos']},
+  {p:'She performed badly. He performed badly too, but worse. [badly]', a:['he performed worse than she did','he performed worse than her']},
+  {p:'The eagle flew high. The rocket flew high too, but higher. [high]', a:['the rocket flew higher than the eagle','the rocket flew higher than the eagle.']},
+  {p:'He draws carefully. She draws carefully too, but more. [carefully]', a:['she draws more carefully than he does','she draws more carefully than him']}
+];
+
+const w2scores = {mc:0,fill:0,match:0,rd:0,cr:0,tr:0};
+const w2totals = {mc:w2mcData.length,fill:w2fillData.length,match:w2matchData.length,rd:w2rdData.length,cr:w2crData.length,tr:w2trData.length};
+
+function renderW2MC(){
+  document.getElementById('w2-mc-qs').innerHTML=w2mcData.map((d,i)=>`<div class="qb"><div class="qt">${d.q}</div>${radios('w2mc',i,d.opts,'w2-radio')}<div class="fb" id="w2mc_fb_${i}"></div></div>`).join('');
+}
+function renderW2Fill(){
+  document.getElementById('w2-fill-qs').innerHTML=w2fillData.map((d,i)=>`<div class="qb"><div class="qt">${i+1}. ${d.pre} _______ ${d.post}</div><input class="txt-in w2" id="w2fill_${i}" type="text" placeholder="Write the comparative adverb…" autocomplete="off"><div class="fb" id="w2fill_fb_${i}"></div></div>`).join('');
+}
+function renderW2Match(){
+  const allOpts=w2matchData.map(d=>`<option value="${d.r}">${d.r}</option>`).join('');
+  document.getElementById('w2-match-qs').innerHTML=w2matchData.map((d,i)=>`<div class="qb"><div class="qt">${i+1}. ${d.d}</div><div class="match-row"><div class="match-pill w2">...</div><select class="match-sel w2" id="w2match_${i}"><option value="">— Select the comparative adverb —</option>${allOpts}</select></div><div class="fb" id="w2match_fb_${i}"></div></div>`).join('');
+}
+function renderW2Reading(){
+  document.getElementById('w2-reading-qs').innerHTML=w2rdData.map((d,i)=>`<div class="qb"><div class="qt">${d.q}</div>${radios('w2rd',i,d.opts,'w2-radio')}<div class="fb" id="w2rd_fb_${i}"></div></div>`).join('');
+}
+function renderW2Correct(){
+  document.getElementById('w2-correct-qs').innerHTML=w2crData.map((d,i)=>`<div class="qb"><div class="qt">${i+1}. ❌ Incorrect: ${d.w}</div>${radios('w2cr',i,d.opts,'w2-radio')}<div class="fb" id="w2cr_fb_${i}"></div></div>`).join('');
+}
+function renderW2Transform(){
+  document.getElementById('w2-transform-qs').innerHTML=w2trData.map((d,i)=>`<div class="qb"><div class="tr-prompt w2">${i+1}. ${d.p}</div><input class="txt-in txt-wide w2" id="w2tr_${i}" type="text" placeholder="Write the comparative sentence here…" autocomplete="off"><div class="fb" id="w2tr_fb_${i}"></div></div>`).join('');
 }
 
-function renderMatch() {
-  // Build a combined <select> with ALL reported options
-  const allOpts = matchData.map(d =>
-    `<option value="${d.r}">${d.r}</option>`
-  ).join('');
+function checkW2MC(){let s=0;w2mcData.forEach((d,i)=>{const r=document.querySelector(`input[name="w2mc_${i}"]:checked`);if(!r){setFb(`w2mc_fb_${i}`,false,'Please select an option.');return;}const ok=parseInt(r.value)===d.ans;if(ok)s++;setFb(`w2mc_fb_${i}`,ok,ok?'':`Correct answer: ${d.opts[d.ans]}`);});w2scores.mc=s;showScore('w2-mc-score',s,w2totals.mc,'w2');}
+function checkW2Fill(){let s=0;w2fillData.forEach((d,i)=>{const el=document.getElementById(`w2fill_${i}`);const val=el.value.trim().toLowerCase();const ok=val===d.blank.toLowerCase();if(ok)s++;setFb(`w2fill_fb_${i}`,ok,ok?'':`The correct form is: "${d.blank}"`);el.style.borderColor=ok?'var(--success)':'var(--error)';});w2scores.fill=s;showScore('w2-fill-score',s,w2totals.fill,'w2');}
+function checkW2Match(){let s=0;w2matchData.forEach((d,i)=>{const el=document.getElementById(`w2match_${i}`);const ok=el.value===d.r;if(ok)s++;setFb(`w2match_fb_${i}`,ok,ok?'':`Correct: "${d.r}"`);});w2scores.match=s;showScore('w2-match-score',s,w2totals.match,'w2');}
+function checkW2Reading(){let s=0;w2rdData.forEach((d,i)=>{const r=document.querySelector(`input[name="w2rd_${i}"]:checked`);if(!r){setFb(`w2rd_fb_${i}`,false,'Please select an option.');return;}const ok=parseInt(r.value)===d.ans;if(ok)s++;setFb(`w2rd_fb_${i}`,ok,ok?'':`Correct: ${d.opts[d.ans]}`);});w2scores.rd=s;showScore('w2-reading-score',s,w2totals.rd,'w2');}
+function checkW2Correct(){let s=0;w2crData.forEach((d,i)=>{const r=document.querySelector(`input[name="w2cr_${i}"]:checked`);if(!r){setFb(`w2cr_fb_${i}`,false,'Please select an option.');return;}const ok=parseInt(r.value)===d.ans;if(ok)s++;setFb(`w2cr_fb_${i}`,ok,ok?'':`Correct: ${d.opts[d.ans]} — ${d.ex}`);});w2scores.cr=s;showScore('w2-correct-score',s,w2totals.cr,'w2');}
+function checkW2Transform(){let s=0;w2trData.forEach((d,i)=>{const el=document.getElementById(`w2tr_${i}`);const val=el.value.trim().toLowerCase().replace(/\.$/,'');const ok=d.a.some(a=>val===a.toLowerCase().replace(/\.$/,''));if(ok)s++;setFb(`w2tr_fb_${i}`,ok,ok?'':`A possible answer: "${d.a[0]}"`);el.style.borderColor=ok?'var(--success)':'var(--error)';});w2scores.tr=s;showScore('w2-transform-score',s,w2totals.tr,'w2');}
+function calcW2Total(){const got=Object.values(w2scores).reduce((a,b)=>a+b,0);const tot=Object.values(w2totals).reduce((a,b)=>a+b,0);document.getElementById('w2-total-num').textContent=`${got} / ${tot}`;const pct=Math.round(got/tot*100);let msg;if(pct>=90)msg='🌟 Outstanding! You have mastered Comparative Adverbs!';else if(pct>=75)msg='👏 Great job! Keep reviewing the rules!';else if(pct>=60)msg='💪 Good effort! A bit more practice will help!';else msg='📖 Keep studying and try again — you can do it!';document.getElementById('w2-total-msg').textContent=`${msg} (${pct}%)`;}
 
-  document.getElementById('match-qs').innerHTML = matchData.map((d, i) => `
-    <div class="qb">
-      <div class="qt">${i + 1}. Direct speech: ${d.d}</div>
-      <div class="match-row">
-        <div class="match-pill">${d.d}</div>
-        <select class="match-sel" id="match_${i}">
-          <option value="">— Select reported speech —</option>
-          ${allOpts}
-        </select>
-      </div>
-      <div class="fb" id="match_fb_${i}"></div>
-    </div>`).join('');
-}
-
-function renderReading() {
-  document.getElementById('reading-qs').innerHTML = rdData.map((d, i) => `
-    <div class="qb">
-      <div class="qt">${d.q}</div>
-      ${radios('rd', i, d.opts)}
-      <div class="fb" id="rd_fb_${i}"></div>
-    </div>`).join('');
-}
-
-function renderCorrect() {
-  document.getElementById('correct-qs').innerHTML = crData.map((d, i) => `
-    <div class="qb">
-      <div class="qt">${i + 1}. ❌ Incorrect sentence: ${d.w}</div>
-      ${radios('cr', i, d.opts)}
-      <div class="fb" id="cr_fb_${i}"></div>
-    </div>`).join('');
-}
-
-function renderTransform() {
-  document.getElementById('transform-qs').innerHTML = trData.map((d, i) => `
-    <div class="qb">
-      <div class="tr-prompt">${i + 1}. ${d.p}</div>
-      <input class="txt-in txt-wide" id="tr_${i}" type="text" placeholder="Write the reported speech sentence here…" autocomplete="off">
-      <div class="fb" id="tr_fb_${i}"></div>
-    </div>`).join('');
-}
-
-/* ══ CHECK FUNCTIONS ════════════════════════ */
-
-// Score tracker — updated each time the student checks a section
-const scores = { mc: 0, fill: 0, match: 0, rd: 0, cr: 0, tr: 0 };
-const totals  = {
-  mc:   mcData.length,
-  fill: fillData.length,
-  match:matchData.length,
-  rd:   rdData.length,
-  cr:   crData.length,
-  tr:   trData.length
-};
-
-// Display feedback on a single question
-function setFb(id, ok, hint) {
-  const el = document.getElementById(id);
-  el.className = 'fb ' + (ok ? 'ok' : 'no');
-  el.textContent = ok ? '✅ Correct!' : ('❌ Try again. ' + (hint || ''));
-}
-
-// Show section score box
-function showScore(id, got, tot) {
-  const el = document.getElementById(id);
-  el.style.display = 'block';
-  const pct = Math.round(got / tot * 100);
-  const msg = pct >= 80 ? '🎉 Excellent work!' : pct >= 60 ? '👍 Good job!' : '📚 Keep practicing!';
-  el.innerHTML = `<div class="snum">${got} / ${tot}</div><p>${msg} (${pct}%)</p>`;
-}
-
-function checkMC() {
-  let s = 0;
-  mcData.forEach((d, i) => {
-    const r = document.querySelector(`input[name="mc_${i}"]:checked`);
-    if (!r) { setFb(`mc_fb_${i}`, false, 'Please select an option.'); return; }
-    const ok = parseInt(r.value) === d.ans;
-    if (ok) s++;
-    setFb(`mc_fb_${i}`, ok, ok ? '' : `Correct answer: ${d.opts[d.ans]}`);
-  });
-  scores.mc = s;
-  showScore('mc-score', s, totals.mc);
-}
-
-function checkFill() {
-  let s = 0;
-  fillData.forEach((d, i) => {
-    const el  = document.getElementById(`fill_${i}`);
-    const val = el.value.trim().toLowerCase();
-    const ok  = val === d.blank.toLowerCase();
-    if (ok) s++;
-    setFb(`fill_fb_${i}`, ok, ok ? '' : `The correct word is: "${d.blank}"`);
-    el.style.borderColor = ok ? 'var(--success)' : 'var(--error)';
-  });
-  scores.fill = s;
-  showScore('fill-score', s, totals.fill);
-}
-
-function checkMatch() {
-  let s = 0;
-  matchData.forEach((d, i) => {
-    const el = document.getElementById(`match_${i}`);
-    const ok = el.value === d.r;
-    if (ok) s++;
-    setFb(`match_fb_${i}`, ok, ok ? '' : `Correct: "${d.r}"`);
-  });
-  scores.match = s;
-  showScore('match-score', s, totals.match);
-}
-
-function checkReading() {
-  let s = 0;
-  rdData.forEach((d, i) => {
-    const r = document.querySelector(`input[name="rd_${i}"]:checked`);
-    if (!r) { setFb(`rd_fb_${i}`, false, 'Please select an option.'); return; }
-    const ok = parseInt(r.value) === d.ans;
-    if (ok) s++;
-    setFb(`rd_fb_${i}`, ok, ok ? '' : `Correct: ${d.opts[d.ans]}`);
-  });
-  scores.rd = s;
-  showScore('reading-score', s, totals.rd);
-}
-
-function checkCorrect() {
-  let s = 0;
-  crData.forEach((d, i) => {
-    const r = document.querySelector(`input[name="cr_${i}"]:checked`);
-    if (!r) { setFb(`cr_fb_${i}`, false, 'Please select an option.'); return; }
-    const ok = parseInt(r.value) === d.ans;
-    if (ok) s++;
-    setFb(`cr_fb_${i}`, ok, ok ? '' : `Correct: ${d.opts[d.ans]} — Rule: ${d.ex}`);
-  });
-  scores.cr = s;
-  showScore('correct-score', s, totals.cr);
-}
-
-function checkTransform() {
-  let s = 0;
-  trData.forEach((d, i) => {
-    const el  = document.getElementById(`tr_${i}`);
-    const val = el.value.trim().toLowerCase().replace(/\.$/, '');
-    const ok  = d.a.some(accepted => val === accepted.toLowerCase().replace(/\.$/, ''));
-    if (ok) s++;
-    setFb(`tr_fb_${i}`, ok, ok ? '' : `A possible answer: "${d.a[0]}"`);
-    el.style.borderColor = ok ? 'var(--success)' : 'var(--error)';
-  });
-  scores.tr = s;
-  showScore('transform-score', s, totals.tr);
-}
-
-function calcTotal() {
-  const got = Object.values(scores).reduce((a, b) => a + b, 0);
-  const tot = Object.values(totals).reduce((a, b) => a + b, 0);
-  document.getElementById('total-num').textContent = `${got} / ${tot}`;
-  const pct = Math.round(got / tot * 100);
-  let msg;
-  if      (pct >= 90) msg = '🌟 Outstanding! You have mastered Reported Speech!';
-  else if (pct >= 75) msg = '👏 Great job! Keep reviewing the rules!';
-  else if (pct >= 60) msg = '💪 Good effort! A bit more practice will help!';
-  else                msg = '📖 Keep studying and try again — you can do it!';
-  document.getElementById('total-msg').textContent = `${msg} (${pct}%)`;
-}
-
-/* ══ INITIALISE ALL SECTIONS ════════════════ */
-renderMC();
-renderFill();
-renderMatch();
-renderReading();
-renderCorrect();
-renderTransform();
+/* ── INIT ──────────────────────────────────── */
+renderMC();renderFill();renderMatch();renderReading();renderCorrect();renderTransform();
+renderW2MC();renderW2Fill();renderW2Match();renderW2Reading();renderW2Correct();renderW2Transform();
 </script>
 </body>
 </html>
